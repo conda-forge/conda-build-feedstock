@@ -54,9 +54,8 @@ test:
     - which conda-inspect  # [unix]
     - where conda-inspect  # [win]
     - conda inspect -h
-    # direction to file is because conda-build does not seem to do the right thing with pipes
-    - conda inspect linkages -h \| grep "--name ENVIRONMENT" # [unix]
-    - conda inspect objects -h \| grep "--name ENVIRONMENT"  # [osx]
+    - conda inspect linkages -h \| grep "--name ENVIRONMENT"  # [unix]
+    - conda inspect objects -h \| grep "--name ENVIRONMENT"   # [osx]
     - which conda-metapackage  # [unix]
     - where conda-metapackage  # [win]
     - conda metapackage -h
