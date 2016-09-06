@@ -1,4 +1,4 @@
-{% set version = "1.21.9" %}
+{% set version = "2.0.1" %}
 
 package:
   name: conda-build
@@ -7,11 +7,11 @@ package:
 source:
   fn: conda-build-{{ version }}.tar.gz
   url: https://github.com/conda/conda-build/archive/{{ version }}.tar.gz
-  sha256: d03e8137550f904d74690a57c163ec2e0a014699e3e95cee05d0023c20cba9a9
+  sha256: 260ddb6df0f4c4ad94823c255086b83c6732606ea86f8e945573147f77e00197
 
 build:
   number: 0
-  script: python setup.py install
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - conda-build = conda_build.main_build:main
     - conda-convert = conda_build.main_convert:main
@@ -19,7 +19,6 @@ build:
     - conda-index = conda_build.main_index:main
     - conda-inspect = conda_build.main_index:main
     - conda-metapackage = conda_build.main_metapackage:main
-    - conda-pipbuild = conda_build.main_pipbuild:main
     - conda-render = conda_build.main_render:main
     - conda-sign = conda_build.main_sign:main
     - conda-skeleton = conda_build.main_skeleton:main
@@ -27,49 +26,56 @@ build:
 requirements:
   build:
     - python
+    - setuptools
 
   run:
-    - python
     - conda >=4.1
+    - filelock
     - jinja2
     - patchelf      # [linux]
     - pycrypto
+    - python
+    - pyyaml
 
 test:
+  # If you run the test suite (~10 min), these are required
+  # requires:
+  #   - pytest
+  #   - pytest-timeout
+  #   - pytest-catchlog
   imports:
     - conda_build
 
   commands:
     - which conda-build  # [unix]
     - where conda-build  # [win]
-    - conda build -h
+    - conda-build -h
     - which conda-convert  # [unix]
     - where conda-convert  # [win]
-    - conda convert -h
+    - conda-convert -h
     - which conda-develop  # [unix]
     - where conda-develop  # [win]
-    - conda develop -h
+    - conda-develop -h
     - which conda-index  # [unix]
     - where conda-index  # [win]
-    - conda index -h
+    - conda-index -h
     - which conda-inspect  # [unix]
     - where conda-inspect  # [win]
-    - conda inspect -h
+    - conda-inspect linkages -h \| grep "--name ENVIRONMENT"  # [unix]
+    - conda-inspect objects -h \| grep "--name ENVIRONMENT"   # [osx]
+    - conda-inspect -h
     - which conda-metapackage  # [unix]
     - where conda-metapackage  # [win]
-    - conda metapackage -h
-    - which conda-pipbuild  # [unix]
-    - where conda-pipbuild  # [win]
-    - conda pipbuild -h
+    - conda-metapackage -h
     - which conda-render  # [unix]
     - where conda-render  # [win]
-    - conda render -h
+    - conda-render -h
     - which conda-sign  # [unix]
     - where conda-sign  # [win]
-    - conda sign -h
+    - conda-sign -h
     - which conda-skeleton  # [unix]
     - where conda-skeleton  # [win]
-    - conda skeleton -h
+    - conda-skeleton -h
 
 about:
   home: https://github.com/conda/conda-build
