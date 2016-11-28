@@ -29,13 +29,17 @@ requirements:
     - setuptools
 
   run:
+    - conda-verify
     - conda >=4.1
+    - contextlib2   # [py27]
     - filelock
     - jinja2
     - patchelf      # [linux]
     - pycrypto
     - python
     - pyyaml
+    - pkginfo
+    - enum34        # [py<34]
 
 test:
   # If you run the test suite (~10 min), these are required
