@@ -1,4 +1,4 @@
-{% set version = "2.0.12" %}
+{% set version = "2.1.1" %}
 
 package:
   name: conda-build
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-build-{{ version }}.tar.gz
   url: https://github.com/conda/conda-build/archive/{{ version }}.tar.gz
-  sha256: 8908eaaa394fc4bbbb7c4ab2d72633b03d3d4bbc7196294393df87669547860f
+  sha256: 716e44d9be0a63a3fdbf19a9aa595d6219649282bd2e8f480aed132e26b06ef8
 
 build:
   number: 0
@@ -30,17 +30,20 @@ requirements:
     - setuptools
 
   run:
+    - beautifulsoup4
+    - chardet
+    - conda  >=4.1,<4.3
+    - contextlib2        # [py27]
     - conda-verify
-    - conda >=4.1
-    - contextlib2   # [py27]
+    - enum34             # [py27]
     - filelock
+    - futures            # [py27]
     - jinja2
-    - patchelf      # [linux]
+    - patchelf           # [linux]
+    - pkginfo
     - pycrypto
     - python
     - pyyaml
-    - pkginfo
-    - enum34        # [py<34]
 
 test:
   # If you run the test suite (~10 min), these are required
