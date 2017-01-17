@@ -51,10 +51,15 @@ test:
   #   - pytest
   #   - pytest-timeout
   #   - pytest-catchlog
+
+  files:
+    - test_bdist_conda_setup.py
+
   imports:
     - conda_build
 
   commands:
+    # Check for all subcommands
     - which conda-build  # [unix]
     - where conda-build  # [win]
     - conda-build -h
@@ -84,6 +89,9 @@ test:
     - which conda-skeleton  # [unix]
     - where conda-skeleton  # [win]
     - conda-skeleton -h
+
+    # Check for bdist_conda
+    - python test_bdist_conda_setup.py bdist_conda --help
 
 about:
   home: https://github.com/conda/conda-build
