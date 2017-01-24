@@ -10,7 +10,7 @@ source:
   sha256: 52307a269109a37ecee7526c5ffa7af862c02ef6dcbb6d1938e348e7ef7f53d5
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py==36]
   entry_points:
     - conda-build = conda_build.cli.main_build:main
@@ -31,7 +31,7 @@ requirements:
   run:
     - beautifulsoup4
     - chardet
-    - conda  >=4.1,<4.3
+    - conda  >=4.1
     - contextlib2        # [py27]
     - conda-verify
     - enum34             # [py27]
