@@ -1,4 +1,4 @@
-{% set version = "2.1.1" %}
+{% set version = "2.1.2" %}
 
 package:
   name: conda-build
@@ -7,10 +7,10 @@ package:
 source:
   fn: conda-build-{{ version }}.tar.gz
   url: https://github.com/conda/conda-build/archive/{{ version }}.tar.gz
-  sha256: e4ef0b56cab8aee03d1fdd87e5d63afa628b2c455abb33716596825fd1338909
+  sha256: 52307a269109a37ecee7526c5ffa7af862c02ef6dcbb6d1938e348e7ef7f53d5
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py==36]
   entry_points:
     - conda-build = conda_build.cli.main_build:main
