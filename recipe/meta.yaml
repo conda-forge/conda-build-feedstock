@@ -7,10 +7,10 @@ package:
 source:
   fn: conda-build-{{ version }}.tar.gz
   url: https://github.com/conda/conda-build/archive/{{ version }}.tar.gz
-  sha256: 3d1acac6ef0f904d0bba6c3d46f0036be8a74d3851af3830097224b108becbb6
+  sha256: 864ce9d28331e61050c226b0c9e586e930bcd2b925ab0525ed3d2d8accd56069
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
