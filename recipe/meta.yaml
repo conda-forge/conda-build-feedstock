@@ -11,7 +11,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [py==36]
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
