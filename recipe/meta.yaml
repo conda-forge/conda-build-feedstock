@@ -1,4 +1,4 @@
-{% set version = "2.1.4" %}
+{% set version = "2.1.5" %}
 
 package:
   name: conda-build
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-build-{{ version }}.tar.gz
   url: https://github.com/conda/conda-build/archive/{{ version }}.tar.gz
-  sha256: 864ce9d28331e61050c226b0c9e586e930bcd2b925ab0525ed3d2d8accd56069
+  sha256: 8bee3ee7d7053f32c4e465aeb55f66f58440e5a2c7178a4393f4238cec141e5d
 
 build:
   number: 1
@@ -42,6 +42,7 @@ requirements:
     - pycrypto
     - python
     - pyyaml
+    - six
 
 test:
   # If you run the test suite (~10 min), these are required
