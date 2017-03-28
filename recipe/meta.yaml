@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "2.1.7" %}
-{% set sha256 = "93b8f3360be0097a7039315e954cc11c20f425b404d091494b019d3a8989721e" %}
+{% set version = "2.1.8" %}
+{% set sha256 = "194f2ce81d562c234851164b248864c7a6dff4f11ebd01c5013cf103d753560d" %}
 
 package:
   name: {{ name }}
@@ -32,7 +32,7 @@ requirements:
   run:
     - beautifulsoup4
     - chardet
-    - conda  >=4.1
+    - conda  >=4.1,<4.4
     - contextlib2        # [py27]
     - conda-verify
     - enum34             # [py27]
