@@ -23,7 +23,7 @@ build:
     - conda-skeleton = conda_build.cli.main_skeleton:main
 
 requirements:
-  build:
+  host:
     - python
     - pip
   run:
@@ -101,6 +101,7 @@ extra:
   recipe-maintainers:
     - jakirkham
     - jjhelmus
+    - mingwandroid
     - msarahan
     - mwcraig
     - ocefpaf
