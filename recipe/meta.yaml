@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.11.0" %}
-{% set sha256 = "4712330ffc3e28e21f72bd05d3fac3c00e8db417efe1996f1a896c17c1152513" %}
+{% set version = "3.0.10" %}
+{% set sha256 = "c71b727d311eda720f54a7c13609c0a9a2c61fc36c7281f4cc0f50b47a773c57" %}
 
 package:
   name: {{ name }}
@@ -31,14 +31,14 @@ requirements:
     - chardet
     - conda  >=4.3
     - conda-verify
-    - contextlib2   # [py<34]
-    - enum34        # [py<34]
+    - contextlib2        # [py27]
+    - enum34             # [py27]
     - filelock
-    - futures       # [py<3]
+    - futures            # [py27]
+    - glob2
     - jinja2
     - patchelf      # [linux]
     - pkginfo
-    - psutil
     - python
     - pyyaml
     - scandir       # [py<34]
@@ -49,8 +49,10 @@ test:
   # If you run the test suite (~10 min), these are required
   # requires:
   #   - pytest
-  #   - pytest-timeout
+  #   - pytest-cov
   #   - pytest-catchlog
+  #   - pytest-xdist
+  #   - pytest-env
 
   files:
     - test_bdist_conda_setup.py
