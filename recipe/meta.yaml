@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.1.4" %}
-{% set sha1 = "a14d1c67b010e85b8943675ebefa811a4a41b777" %}
+{% set version = "3.1.5" %}
+{% set sha1 = "9b62249a8a5ff2afb84f71a3c53531b4c2048bd0" %}
 
 package:
   name: {{ name }}
