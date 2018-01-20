@@ -62,30 +62,30 @@ test:
 
   commands:
     # Check for all subcommands
-    - which conda-build  # [unix]
+    - type -P conda-build  # [unix]
     - where conda-build  # [win]
     - conda-build -h
-    - which conda-convert  # [unix]
+    - type -P conda-convert  # [unix]
     - where conda-convert  # [win]
     - conda-convert -h
-    - which conda-develop  # [unix]
+    - type -P conda-develop  # [unix]
     - where conda-develop  # [win]
     - conda-develop -h
-    - which conda-index  # [unix]
+    - type -P conda-index  # [unix]
     - where conda-index  # [win]
     - conda-index -h
-    - which conda-inspect  # [unix]
+    - type -P conda-inspect  # [unix]
     - where conda-inspect  # [win]
     - conda-inspect linkages -h \| grep "--name ENVIRONMENT"  # [unix]
     - conda-inspect objects -h \| grep "--name ENVIRONMENT"   # [osx]
     - conda-inspect -h
-    - which conda-metapackage  # [unix]
+    - type -P conda-metapackage  # [unix]
     - where conda-metapackage  # [win]
     - conda-metapackage -h
-    - which conda-render  # [unix]
+    - type -P conda-render  # [unix]
     - where conda-render  # [win]
     - conda-render -h
-    - which conda-skeleton  # [unix]
+    - type -P conda-skeleton  # [unix]
     - where conda-skeleton  # [win]
     - conda-skeleton -h
 
