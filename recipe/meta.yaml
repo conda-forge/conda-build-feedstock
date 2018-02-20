@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.4.1" %}
-{% set sha1 = "580e54b2f1346df0004808df064013c339c7a3a7" %}
+{% set version = "3.5.0" %}
+{% set sha1 = "48e1a270d715a9070775b62d7f82c291c37e154b" %}
 
 package:
   name: {{ name }}
@@ -39,9 +39,10 @@ requirements:
     - jinja2
     - patchelf      # [linux]
     - pkginfo
+    - psutil
     - python
     - pyyaml
-    - scandir       # [py<34]
+    - scandir            # [py27]
     - six
     - glob2 >=0.6
 
