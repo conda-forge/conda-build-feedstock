@@ -44,6 +44,7 @@ requirements:
     - python
     - pyyaml
     - six
+    - psutil
 
 test:
   # If you run the test suite (~10 min), these are required
