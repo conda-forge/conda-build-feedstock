@@ -7,7 +7,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
@@ -26,7 +25,7 @@ build:
 requirements:
   build:
     - python
-    - setuptools
+    - pip
 
   run:
     - beautifulsoup4
@@ -41,10 +40,12 @@ requirements:
     - jinja2
     - patchelf           # [linux]
     - pkginfo
+    - psutil
     - python
     - pyyaml
+    - requests
+    - scandir  # [py<34]
     - six
-    - psutil
 
 test:
   # If you run the test suite (~10 min), these are required
