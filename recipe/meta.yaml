@@ -1,13 +1,12 @@
 {% set name = "conda-build" %}
-{% set version = "3.4.2" %}
-{% set sha256 = "a992039a2425ec8d547326daab87dd9233cbcdade70a1f325e7526baf26bf768" %}
+{% set version = "3.5.1" %}
+{% set sha256 = "8024d0b19ca8f1c726e4c921f787981e531bb945fe4f2d86cecf4a23689519c4" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
@@ -26,24 +25,26 @@ build:
 requirements:
   build:
     - python
-    - setuptools
+    - pip
 
   run:
     - beautifulsoup4
     - chardet
-    - conda >=4.3
+    - conda  >=4.3
     - conda-verify
-    - contextlib2        # [py27]
-    - enum34             # [py27]
+    - contextlib2   # [py<34]
+    - enum34        # [py<34]
     - filelock
-    - futures            # [py27]
-    - glob2
+    - futures       # [py<3]
     - jinja2
-    - patchelf           # [linux]
+    - patchelf      # [linux]
     - pkginfo
+    - psutil
     - python
     - pyyaml
+    - scandir       # [py<34]
     - six
+    - glob2
 
 test:
   # If you run the test suite (~10 min), these are required
