@@ -7,7 +7,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
@@ -26,24 +25,25 @@ build:
 requirements:
   build:
     - python
-    - setuptools
-
+    - pip
   run:
     - beautifulsoup4
     - chardet
-    - conda >=4.3
+    - conda  >=4.3
     - conda-verify
-    - contextlib2        # [py27]
-    - enum34             # [py27]
+    - contextlib2   # [py<34]
+    - enum34        # [py<34]
     - filelock
-    - futures            # [py27]
-    - glob2
+    - futures       # [py<3]
     - jinja2
-    - patchelf           # [linux]
+    - patchelf      # [linux]
     - pkginfo
+    - psutil
     - python
     - pyyaml
+    - scandir       # [py<34]
     - six
+    - glob2
 
 test:
   # If you run the test suite (~10 min), these are required
