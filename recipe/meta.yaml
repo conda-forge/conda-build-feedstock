@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.5.1" %}
-{% set sha256 = "8024d0b19ca8f1c726e4c921f787981e531bb945fe4f2d86cecf4a23689519c4" %}
+{% set version = "3.6.0" %}
+{% set sha256 = "d71958c5f67d9bcda65ca4df8b2aa6a7619cec92fef145aff1d0cb1d5fb36ea2" %}
 
 package:
   name: {{ name }}
@@ -26,7 +26,6 @@ requirements:
   build:
     - python
     - pip
-
   run:
     - beautifulsoup4
     - chardet
