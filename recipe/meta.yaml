@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -43,7 +43,7 @@ requirements:
     - pyyaml
     - scandir       # [py<34]
     - six
-    - glob2
+    - glob2 >=0.6
 
 test:
   # If you run the test suite (~10 min), these are required
