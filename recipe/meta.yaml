@@ -11,7 +11,7 @@ source:
   git_tag: {{ sha1 }}
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -35,7 +35,7 @@ requirements:
     - enum34             # [py27]
     - filelock
     - futures            # [py27]
-    - glob2
+    - glob2 >=0.6
     - jinja2
     - patchelf      # [linux]
     - pkginfo
