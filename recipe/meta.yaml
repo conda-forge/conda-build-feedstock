@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.11.0" %}
-{% set sha1 = "9e0e7f124fa5cfa2adc79bb254b80323fc34a35b" %}
+{% set version = "3.12.0" %}
+{% set sha1 = "60401f5cfef46c4341d52cd5d65ebf49384a69f6" %}
 
 package:
   name: {{ name }}
@@ -30,12 +30,11 @@ requirements:
     - beautifulsoup4
     - chardet
     - conda  >=4.3
-    - conda-verify
     - contextlib2        # [py27]
     - enum34             # [py27]
     - filelock
     - futures            # [py27]
-    - glob2 >=0.6
+    - glob2 >=0.6        # [py27]
     - jinja2
     - patchelf      # [linux]
     - pkginfo
@@ -45,6 +44,9 @@ requirements:
     - scandir            # [py27]
     - six
     - glob2 >=0.6
+
+  run_constrained:
+    - conda-verify  >=3.1.0
 
 test:
   # If you run the test suite (~10 min), these are required
