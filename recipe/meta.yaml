@@ -36,7 +36,9 @@ requirements:
     - enum34             # [py27]
     - filelock
     - futures            # [py27]
-    - glob2 >=0.6        # [py27]
+    # TODO: glob2 should only be necessary for py27, but cleanup release will be 3.12.2 or beyond.
+    # # [py27]
+    - glob2 >=0.6
     - jinja2
     - python-libarchive-c
     - patchelf      # [linux]
