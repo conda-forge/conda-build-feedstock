@@ -9,6 +9,8 @@ Feedstock license: BSD 3-Clause
 
 Summary: tools for building conda packages
 
+Conda-build contains commands and tools to allow you to build your own
+packages for conda.
 
 
 Current build status
