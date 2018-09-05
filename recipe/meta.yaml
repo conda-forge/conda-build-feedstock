@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.13.0" %}
-{% set sha256 = "cedd9865ab19ef476a18e554ae1c3992351477339204a860e3a89ba68c8667fa" %}
+{% set version = "3.14.0" %}
+{% set sha256 = "2571e360a56c41e742a868fb0b28cede73984abece6571324aea530aadf73215" %}
 
 package:
   name: {{ name }}
@@ -45,6 +45,7 @@ requirements:
     - scandir            # [py27]
     - six
     - glob2 >=0.6
+    - pytz
 
   run_constrained:
     - conda-verify  >=3.1.0
