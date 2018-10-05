@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.15.0" %}
-{% set sha256 = "719a19f6ba069b281ee5bcf7673396a0aba56b81b54b6019d44d3d94d869af31" %}
+{% set version = "3.16.0" %}
+{% set sha256 = "d0751164d54e3299955bcedcedfba392d53972ce303a9615d55de726529bf517" %}
 
 package:
   name: {{ name }}
@@ -40,12 +40,13 @@ requirements:
     # # [py27]
     - glob2 >=0.6
     - jinja2
-    - python-libarchive-c
     - patchelf      # [linux]
     - pkginfo
     - psutil
     - python
     - py-lief  # [not (win and py2k)]
+    - python-libarchive-c
+    - pytz
     - pyyaml
     - scandir            # [py27]
     - six
