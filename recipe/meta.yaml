@@ -37,6 +37,7 @@ requirements:
     - futures            # [py27]
     - glob2 >=0.6        # [py27]
     - jinja2
+    - libarchive
     - patchelf      # [linux]
     - pkginfo
     - psutil
