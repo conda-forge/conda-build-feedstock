@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.17.7" %}
-{% set sha256 = "afcccff07e08bb64486cea98d4f645cd8c8a2f04ff246125f1b37204e52be144" %}
+{% set version = "3.17.8" %}
+{% set sha256 = "4041cbe33b3e67966725abf816e94e964f730590faafc1201166b852a58c2133" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name}}-{{ version }}.tar.gz
-  url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
