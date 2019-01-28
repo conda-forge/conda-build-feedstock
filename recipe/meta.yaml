@@ -103,6 +103,9 @@ test:
     # Check for bdist_conda
     - python test_bdist_conda_setup.py bdist_conda --help
 
+  downstreams:
+    - conda-smithy
+
 about:
   home: https://github.com/conda/conda-build
   summary: tools for building conda packages
