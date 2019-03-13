@@ -36,14 +36,13 @@ requirements:
     - enum34             # [py27]
     - filelock
     - futures            # [py27]
-    - glob2 >=0.6        # [py27]
     - jinja2
     - python-libarchive-c
-    - patchelf      # [linux]
+    - patchelf           # [linux]
     - pkginfo
     - psutil
     - python
-    - py-lief  # [not (win and py2k)]
+    - py-lief            # [not ((win and py2k) or ppc64le)]
     - pyyaml
     - scandir            # [py27]
     - six
