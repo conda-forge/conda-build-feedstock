@@ -10,8 +10,6 @@ source:
   fn: {{ name}}-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - gh3446.patch
 
 build:
   number: 0
@@ -39,7 +37,6 @@ requirements:
     - filelock
     - futures            # [py27]
     - jinja2
-    - python-libarchive-c
     - patchelf           # [linux]
     - pkginfo
     - psutil
@@ -51,6 +48,7 @@ requirements:
     - glob2 >=0.6
     - pytz
     - tqdm
+    - conda-package-handling >=1.1
 
   run_constrained:
     - conda-verify  >=3.1.0
