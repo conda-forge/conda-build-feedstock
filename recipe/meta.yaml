@@ -28,6 +28,7 @@ requirements:
   host:
     - python
     - pip
+    - conda-package-handling >=1.1
   run:
     - beautifulsoup4
     - chardet
