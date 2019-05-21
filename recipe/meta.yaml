@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.17.8" %}
-{% set sha256 = "4041cbe33b3e67966725abf816e94e964f730590faafc1201166b852a58c2133" %}
+{% set version = "3.18.1" %}
+{% set sha256 = "27a123b7958e2f9bd0bed16d1445fed9480c7181091f43783b01d95a488e1d4a" %}
 
 package:
   name: {{ name }}
@@ -10,11 +10,9 @@ source:
   fn: {{ name}}-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - gh3446.patch
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -30,6 +28,7 @@ requirements:
   host:
     - python
     - pip
+    - conda-package-handling >=1.1
   run:
     - beautifulsoup4
     - chardet
@@ -39,7 +38,6 @@ requirements:
     - filelock
     - futures            # [py27]
     - jinja2
-    - python-libarchive-c
     - patchelf           # [linux]
     - pkginfo
     - psutil
@@ -51,6 +49,7 @@ requirements:
     - glob2 >=0.6
     - pytz
     - tqdm
+    - conda-package-handling >=1.1
 
   run_constrained:
     - conda-verify  >=3.1.0
