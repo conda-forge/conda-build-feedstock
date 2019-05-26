@@ -1,14 +1,13 @@
 {% set name = "conda-build" %}
-{% set version = "3.17.8" %}
-{% set sha256 = "4041cbe33b3e67966725abf816e94e964f730590faafc1201166b852a58c2133" %}
+{% set version = "3.18.2" %}
+{% set sha256 = "c3e780d4c60de50c92813e4324e202d7a76f4260e4a15ac91451db864ad633e3" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name}}-{{ version }}.tar.gz
-  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -36,24 +35,20 @@ requirements:
     - enum34             # [py27]
     - filelock
     - futures            # [py27]
-    # TODO: glob2 should only be necessary for py27, but cleanup release will be 3.12.2 or beyond.
-    # # [py27]
-    - glob2 >=0.6
     - jinja2
     - patchelf      # [linux]
     - pkginfo
     - psutil
     - python
     - py-lief  # [not (win and py2k)]
-    - python-libarchive-c
     - py-lief       # [not win]
-    - pytz
     - pyyaml
     - scandir            # [py27]
     - six
     - glob2 >=0.6
     - pytz
     - tqdm
+    - conda-package-handling >=1.1
 
   run_constrained:
     - conda-verify  >=3.1.0
