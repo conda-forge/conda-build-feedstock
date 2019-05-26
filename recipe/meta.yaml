@@ -7,8 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name}}-{{ version }}.tar.gz
-  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
