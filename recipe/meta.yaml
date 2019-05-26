@@ -1,14 +1,13 @@
 {% set name = "conda-build" %}
-{% set version = "3.18.1" %}
-{% set sha256 = "27a123b7958e2f9bd0bed16d1445fed9480c7181091f43783b01d95a488e1d4a" %}
+{% set version = "3.18.2" %}
+{% set sha256 = "c3e780d4c60de50c92813e4324e202d7a76f4260e4a15ac91451db864ad633e3" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name}}-{{ version }}.tar.gz
-  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -42,7 +41,7 @@ requirements:
     - pkginfo
     - psutil
     - python
-    - py-lief            # [not ((win and py2k) or ppc64le)]
+    - py-lief            # [not (win and py2k)]
     - pyyaml
     - scandir            # [py27]
     - six
