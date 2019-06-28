@@ -44,11 +44,12 @@ requirements:
     - py-lief            # [not (win and py2k)]
     - pyyaml
     - scandir            # [py27]
+    - setuptools
     - six
     - glob2 >=0.6
     - pytz
     - tqdm
-    - conda-package-handling >=1.1
+    - conda-package-handling >=1.2
 
   run_constrained:
     - conda-verify  >=3.1.0
