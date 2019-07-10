@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.18.4" %}
-{% set sha256 = "4fcead33c1248411c2c8663ed8b8691bff19bd3329c2305a4935fb1f04d2a350" %}
+{% set version = "3.18.7" %}
+{% set sha256 = "9d311c97d8b36f4869124bf1e5aeb1f0566dc85d8c17e92d222d6abf7abfca42" %}
 
 package:
   name: {{ name }}
@@ -40,8 +40,7 @@ requirements:
     - pkginfo
     - psutil
     - python
-    - py-lief  # [not (win and py2k)]
-    - py-lief       # [not win]
+    - py-lief  # [not (win and py2k) and not ppc64le]
     - pyyaml
     - scandir            # [py27]
     - six
@@ -58,7 +57,6 @@ test:
   # requires:
   #   - pytest
   #   - pytest-cov
-  #   - pytest-catchlog
   #   - pytest-xdist
   #   - pytest-env
 
