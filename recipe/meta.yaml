@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -44,11 +44,12 @@ requirements:
     - py-lief            # [not (win and py2k)]
     - pyyaml
     - scandir            # [py27]
+    - setuptools
     - six
     - glob2 >=0.6
     - pytz
     - tqdm
-    - conda-package-handling >=1.1
+    - conda-package-handling >=1.3
 
   run_constrained:
     - conda-verify  >=3.1.0
