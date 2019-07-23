@@ -29,10 +29,6 @@ source run_conda_forge_build_setup
 # make the build number clobber
 make_build_number "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
 
-# workaround for cross device move issue in older versions of conda-build
-export TMPDIR="${FEEDSTOCK_ROOT}/tmp"
-mkdir -p "${TMPDIR}"
-
 conda build "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" \
     --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml"
 
