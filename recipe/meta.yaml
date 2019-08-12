@@ -43,7 +43,7 @@ requirements:
     - pkginfo
     - psutil
     - python
-    - py-lief  # [not (win and py2k) and not ppc64le]
+    - py-lief  # [not (win and py2k)]
     - pyyaml
     - ripgrep            # [x86_64]
     - scandir            # [py27]
