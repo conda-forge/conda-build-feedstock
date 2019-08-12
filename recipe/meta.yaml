@@ -13,7 +13,7 @@ source:
     - gh3606.patch
 
 build:
-  number: 2
+  number: 3
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -29,11 +29,11 @@ requirements:
   host:
     - python
     - pip
-    - conda-package-handling >=1.1
+    - conda-package-handling >=1.3
   run:
     - beautifulsoup4
     - chardet
-    - conda  >=4.3
+    - conda  >=4.5
     - contextlib2        # [py27]
     - enum34             # [py27]
     - filelock
