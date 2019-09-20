@@ -13,7 +13,7 @@ source:
     - gh3606.patch
 
 build:
-  number: 4
+  number: 5
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -45,7 +45,7 @@ requirements:
     - python
     - py-lief  # [not (win and py2k)]
     - pyyaml
-    - ripgrep            # [x86_64]
+    - ripgrep
     - scandir            # [py27]
     - setuptools
     - six
