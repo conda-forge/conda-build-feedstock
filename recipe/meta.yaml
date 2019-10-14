@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.18.9" %}
-{% set sha256 = "de6238a38aec1007d0a0ce757ac90b1d23d76d7f8494635640c0437ab7abe881" %}
+{% set version = "3.18.10" %}
+{% set sha256 = "8caa55c573d7fcd85e55dde6881115bd309953d267dc55d1fe67b0e5658656ad" %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,7 @@ source:
     - gh3606.patch
 
 build:
-  number: 5
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
