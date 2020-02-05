@@ -11,9 +11,10 @@ source:
   sha256: {{ sha256 }}
   patches:
     - gh3606.patch
+    - gh3868.patch
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main

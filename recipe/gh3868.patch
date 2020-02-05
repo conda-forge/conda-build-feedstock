@@ -1,0 +1,63 @@
+From e6dee429d30bd56d9495a295e637ce92910d22a6 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 4 Feb 2020 19:26:30 -0600
+Subject: [PATCH 1/2] Ignore run_exports of python for noarch: python
+
+---
+ conda_build/render.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/conda_build/render.py b/conda_build/render.py
+index 2312b3cda..473d18412 100644
+--- a/conda_build/render.py
++++ b/conda_build/render.py
+@@ -352,7 +352,11 @@ def get_upstream_pins(m, actions, env):
+     linked_packages = actions.get('LINK', [])
+     linked_packages = [pkg for pkg in linked_packages if pkg.name in explicit_specs]
+ 
+-    ignore_list = utils.ensure_list(m.get_value('build/ignore_run_exports'))
++    default_ignore_exports = []
++    if m.noarch or m.noarch_python:
++        default_ignore_exports = ['python']
++
++    ignore_list = utils.ensure_list(m.get_value('build/ignore_run_exports', default_ignore_exports))
+     additional_specs = {}
+     for pkg in linked_packages:
+         run_exports = None
+
+From 1ff4bd5560cb0d11bba60e9d54c4829b23e0a257 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 4 Feb 2020 19:28:20 -0600
+Subject: [PATCH 2/2] Fix preprocesing selector py for python with build string
+
+Also add py37, py38, py39
+---
+ conda_build/metadata.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/conda_build/metadata.py b/conda_build/metadata.py
+index a89d5f05b..1e1511790 100644
+--- a/conda_build/metadata.py
++++ b/conda_build/metadata.py
+@@ -95,7 +95,7 @@ def ns_cfg(config):
+     # there are times when python comes in as a tuple
+     if not hasattr(py, 'split'):
+         py = py[0]
+-    py = int("".join(py.split('.')[:2]))
++    py = int("".join(py.split(' ')[0].split('.')[:2]))
+ 
+     d.update(dict(py=py,
+                     py3k=bool(30 <= py < 40),
+@@ -105,7 +105,11 @@ def ns_cfg(config):
+                     py33=bool(py == 33),
+                     py34=bool(py == 34),
+                     py35=bool(py == 35),
+-                    py36=bool(py == 36),))
++                    py36=bool(py == 36),
++                    py37=bool(py == 37),
++                    py38=bool(py == 38),
++                    py39=bool(py == 39),
++                 ))
+ 
+     np = config.variant.get('numpy')
+     if not np:
