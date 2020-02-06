@@ -1,7 +1,7 @@
 From e6dee429d30bd56d9495a295e637ce92910d22a6 Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Tue, 4 Feb 2020 19:26:30 -0600
-Subject: [PATCH 1/2] Ignore run_exports of python for noarch: python
+Subject: [PATCH 1/9] Ignore run_exports of python for noarch: python
 
 ---
  conda_build/render.py | 6 +++++-
@@ -25,18 +25,17 @@ index 2312b3cda..473d18412 100644
      for pkg in linked_packages:
          run_exports = None
 
-From 1ff4bd5560cb0d11bba60e9d54c4829b23e0a257 Mon Sep 17 00:00:00 2001
+From d4a825d15c9393c97c7fac91129daeb129727d61 Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Tue, 4 Feb 2020 19:28:20 -0600
-Subject: [PATCH 2/2] Fix preprocesing selector py for python with build string
+Subject: [PATCH 2/9] Fix preprocesing selector py for python with build string
 
-Also add py37, py38, py39
 ---
- conda_build/metadata.py | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ conda_build/metadata.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/conda_build/metadata.py b/conda_build/metadata.py
-index a89d5f05b..1e1511790 100644
+index a89d5f05b..bb04648a5 100644
 --- a/conda_build/metadata.py
 +++ b/conda_build/metadata.py
 @@ -95,7 +95,7 @@ def ns_cfg(config):
@@ -48,16 +47,317 @@ index a89d5f05b..1e1511790 100644
  
      d.update(dict(py=py,
                      py3k=bool(30 <= py < 40),
-@@ -105,7 +105,11 @@ def ns_cfg(config):
-                     py33=bool(py == 33),
-                     py34=bool(py == 34),
-                     py35=bool(py == 35),
--                    py36=bool(py == 36),))
-+                    py36=bool(py == 36),
-+                    py37=bool(py == 37),
-+                    py38=bool(py == 38),
-+                    py39=bool(py == 39),
-+                 ))
+
+From 7cb355f559884b010d3f3887ef594c3f61067636 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Thu, 6 Feb 2020 11:40:41 -0600
+Subject: [PATCH 3/9] Add comment on splitting with space
+
+---
+ conda_build/metadata.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/conda_build/metadata.py b/conda_build/metadata.py
+index bb04648a5..290de96e1 100644
+--- a/conda_build/metadata.py
++++ b/conda_build/metadata.py
+@@ -95,6 +95,8 @@ def ns_cfg(config):
+     # there are times when python comes in as a tuple
+     if not hasattr(py, 'split'):
+         py = py[0]
++    # go from "3.6 *_cython" -> "36"
++    # or from "3.6.9" -> "36"
+     py = int("".join(py.split(' ')[0].split('.')[:2]))
  
-     np = config.variant.get('numpy')
-     if not np:
+     d.update(dict(py=py,
+
+From 917de4b73086a7896d20a9534b0e84d90ced34e9 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Thu, 6 Feb 2020 11:58:54 -0600
+Subject: [PATCH 4/9] Add test for python version change
+
+---
+ .../metadata/_noarch_python/conda_build_config.yaml             | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
+
+diff --git a/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml b/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
+new file mode 100644
+index 000000000..6650d0bd5
+--- /dev/null
++++ b/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
+@@ -0,0 +1,2 @@
++python:
++- "3.6 *"
+
+From 2223c7511a02eca753d640cdfd43d0299eac3518 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Thu, 6 Feb 2020 12:35:52 -0600
+Subject: [PATCH 5/9] Add a test for python run_exports on noarch: python
+
+---
+ .../metadata/_run_exports_noarch/meta.yaml          |  9 +++++++++
+ tests/test_api_build.py                             | 13 +++++++++++++
+ 2 files changed, 22 insertions(+)
+ create mode 100644 tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
+
+diff --git a/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml b/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
+new file mode 100644
+index 000000000..600dbf235
+--- /dev/null
++++ b/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
+@@ -0,0 +1,9 @@
++package:
++  name: python
++  version: 3.6
++
++build:
++  number: 0
++  string: with_run_exports
++  run_exports:
++    - python 3.6 with_run_exports
+diff --git a/tests/test_api_build.py b/tests/test_api_build.py
+index 120271335..b53479c19 100644
+--- a/tests/test_api_build.py
++++ b/tests/test_api_build.py
+@@ -1011,6 +1011,19 @@ def test_ignore_run_exports(testing_metadata, testing_config):
+     assert 'downstream_pinned_package 1.0' not in m.meta['requirements'].get('run', [])
+ 
+ 
++def test_run_exports_noarch_python(testing_metadata, testing_config):
++    # build the package with run exports for ensuring that we ignore it
++    api.build(os.path.join(metadata_dir, '_run_exports_noarch'), config=testing_config,
++              notest=True)
++    # customize our fixture metadata with our desired changes
++    testing_metadata.meta['requirements']['host'] = ['python 3.6 with_run_exports']
++    testing_metadata.meta['requirements']['run'] = ['python 3.6']
++    testing_metadata.meta['build']['noarch'] = 'python'
++    testing_metadata.config.index = None
++    m = finalize_metadata(testing_metadata)
++    assert 'python 3.6 with_run_exports' not in m.meta['requirements'].get('run', [])
++
++
+ def test_pin_subpackage_exact(testing_config):
+     recipe = os.path.join(metadata_dir, '_pin_subpackage_exact')
+     ms = api.render(recipe, config=testing_config)
+
+From 52b837b0de7ed013be577deec701f485b7daa919 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Thu, 6 Feb 2020 13:49:34 -0600
+Subject: [PATCH 6/9] Use the same test for run_exports for py test
+
+Can't use python 3.6 in other cases as it might not be available
+Using the test for run_exports makes sure that there is a
+python 3.6 available
+---
+ .../metadata/_noarch_python/conda_build_config.yaml        | 2 --
+ tests/test_api_build.py                                    | 7 +++++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+ delete mode 100644 tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
+
+diff --git a/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml b/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
+deleted file mode 100644
+index 6650d0bd5..000000000
+--- a/tests/test-recipes/metadata/_noarch_python/conda_build_config.yaml
++++ /dev/null
+@@ -1,2 +0,0 @@
+-python:
+-- "3.6 *"
+diff --git a/tests/test_api_build.py b/tests/test_api_build.py
+index b53479c19..612c11a75 100644
+--- a/tests/test_api_build.py
++++ b/tests/test_api_build.py
+@@ -1016,11 +1016,14 @@ def test_run_exports_noarch_python(testing_metadata, testing_config):
+     api.build(os.path.join(metadata_dir, '_run_exports_noarch'), config=testing_config,
+               notest=True)
+     # customize our fixture metadata with our desired changes
+-    testing_metadata.meta['requirements']['host'] = ['python 3.6 with_run_exports']
+-    testing_metadata.meta['requirements']['run'] = ['python 3.6']
++    testing_metadata.meta['requirements']['host'] = ['python']
++    testing_metadata.meta['requirements']['run'] = ['python']
+     testing_metadata.meta['build']['noarch'] = 'python'
+     testing_metadata.config.index = None
++    testing_metadata.config.variant["python"] = "3.6 with_run_exports"
++
+     m = finalize_metadata(testing_metadata)
++    assert 'python 3.6 with_run_exports' in m.meta['requirements'].get('host', [])
+     assert 'python 3.6 with_run_exports' not in m.meta['requirements'].get('run', [])
+ 
+ 
+
+From f93450193762f5e6cb324804fd7e61fea9cca02f Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Fri, 7 Feb 2020 16:05:36 -0600
+Subject: [PATCH 7/9] Add noarch run_exports
+
+---
+ conda_build/build.py                          |  2 +-
+ conda_build/metadata.py                       |  4 ++-
+ conda_build/render.py                         | 28 ++++++++++---------
+ conda_build/utils.py                          |  6 ++++
+ .../metadata/_run_exports_noarch/meta.yaml    |  5 +++-
+ 5 files changed, 29 insertions(+), 16 deletions(-)
+
+diff --git a/conda_build/build.py b/conda_build/build.py
+index 45230634f..3cc7d137e 100644
+--- a/conda_build/build.py
++++ b/conda_build/build.py
+@@ -1151,7 +1151,7 @@ def write_run_exports(m):
+         with open(os.path.join(m.config.info_dir, 'run_exports.json'), 'w') as f:
+             if not hasattr(run_exports, 'keys'):
+                 run_exports = {'weak': run_exports}
+-            for k in ('weak', 'strong'):
++            for k in utils.RUN_EXPORTS_TYPES:
+                 if k in run_exports:
+                     run_exports[k] = utils.ensure_list(run_exports[k])
+             json.dump(run_exports, f)
+diff --git a/conda_build/metadata.py b/conda_build/metadata.py
+index 290de96e1..28ef8caec 100644
+--- a/conda_build/metadata.py
++++ b/conda_build/metadata.py
+@@ -313,7 +313,9 @@ def ensure_matching_hashes(output_metadata):
+             if m != om:
+                 run_exports = om.meta.get('build', {}).get('run_exports', [])
+                 if hasattr(run_exports, 'keys'):
+-                    run_exports = run_exports.get('strong', []) + run_exports.get('weak', [])
++                    run_exports = []
++                    for export_type in utils.RUN_EXPORTS_TYPES:
++                        run_exports = run_exports + run_exports.get(export_type, [])
+                 deps = _get_all_dependencies(om, envs) + run_exports
+                 for dep in deps:
+                     if (dep.startswith(m.name() + ' ') and len(dep.split(' ')) == 3 and
+diff --git a/conda_build/render.py b/conda_build/render.py
+index 473d18412..99c7ca6ca 100644
+--- a/conda_build/render.py
++++ b/conda_build/render.py
+@@ -352,11 +352,7 @@ def get_upstream_pins(m, actions, env):
+     linked_packages = actions.get('LINK', [])
+     linked_packages = [pkg for pkg in linked_packages if pkg.name in explicit_specs]
+ 
+-    default_ignore_exports = []
+-    if m.noarch or m.noarch_python:
+-        default_ignore_exports = ['python']
+-
+-    ignore_list = utils.ensure_list(m.get_value('build/ignore_run_exports', default_ignore_exports))
++    ignore_list = utils.ensure_list(m.get_value('build/ignore_run_exports'))
+     additional_specs = {}
+     for pkg in linked_packages:
+         run_exports = None
+@@ -414,18 +410,24 @@ def add_upstream_pins(m, permit_unsatisfiable_variants, exclude_pattern):
+ 
+         host_deps, host_unsat, extra_run_specs_from_host = _read_upstream_pin_files(m, 'host',
+                                                     permit_unsatisfiable_variants, exclude_pattern)
+-        extra_run_specs = set(extra_run_specs_from_host.get('strong', []) +
+-                              extra_run_specs_from_host.get('weak', []) +
+-                              extra_run_specs_from_build.get('strong', []))
++        if m.noarch or m.noarch_python:
++            extra_run_specs = set(extra_run_specs_from_host.get('noarch', []))
++        else:
++            extra_run_specs = set(extra_run_specs_from_host.get('strong', []) +
++                                  extra_run_specs_from_host.get('weak', []) +
++                                  extra_run_specs_from_build.get('strong', []))
+     else:
+         host_deps = []
+         host_unsat = []
+-        extra_run_specs = set(extra_run_specs_from_build.get('strong', []))
+-        if m.build_is_host:
+-            extra_run_specs.update(extra_run_specs_from_build.get('weak', []))
+-            build_deps = set(build_deps or []).update(extra_run_specs_from_build.get('weak', []))
++        if m.noarch or m.noarch_python:
++            extra_run_specs = set(extra_run_specs_from_host.get('noarch', []))
+         else:
+-            host_deps = set(extra_run_specs_from_build.get('strong', []))
++            extra_run_specs = set(extra_run_specs_from_build.get('strong', []))
++            if m.build_is_host:
++                extra_run_specs.update(extra_run_specs_from_build.get('weak', []))
++                build_deps = set(build_deps or []).update(extra_run_specs_from_build.get('weak', []))
++            else:
++                host_deps = set(extra_run_specs_from_build.get('strong', []))
+ 
+     run_deps = extra_run_specs | set(utils.ensure_list(requirements.get('run')))
+ 
+diff --git a/conda_build/utils.py b/conda_build/utils.py
+index d41bb025c..f96d7d076 100644
+--- a/conda_build/utils.py
++++ b/conda_build/utils.py
+@@ -108,6 +108,12 @@ def glob(pathname, recursive=True):
+     "noarch",
+ }
+ 
++RUN_EXPORTS_TYPES = {
++    "weak",
++    "strong",
++    "noarch",
++}
++
+ PY_TMPL = """
+ # -*- coding: utf-8 -*-
+ import re
+diff --git a/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml b/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
+index 600dbf235..4b2bb553f 100644
+--- a/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
++++ b/tests/test-recipes/metadata/_run_exports_noarch/meta.yaml
+@@ -6,4 +6,7 @@ build:
+   number: 0
+   string: with_run_exports
+   run_exports:
+-    - python 3.6 with_run_exports
++    noarch:
++      - python
++    weak:
++      - python 3.6 run_exports
+
+From d43dff1e49fa6a0691bc1b5d9e9ba105aa0e9bc0 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Fri, 7 Feb 2020 16:58:09 -0600
+Subject: [PATCH 8/9] Fix when not cross
+
+---
+ conda_build/render.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/conda_build/render.py b/conda_build/render.py
+index 99c7ca6ca..32371cdc7 100644
+--- a/conda_build/render.py
++++ b/conda_build/render.py
+@@ -420,7 +420,12 @@ def add_upstream_pins(m, permit_unsatisfiable_variants, exclude_pattern):
+         host_deps = []
+         host_unsat = []
+         if m.noarch or m.noarch_python:
+-            extra_run_specs = set(extra_run_specs_from_host.get('noarch', []))
++            if m.build_is_host:
++                extra_run_specs = set(extra_run_specs_from_build.get('noarch', []))
++                build_deps = set(build_deps or []).update(extra_run_specs_from_build.get('noarch', []))
++            else:
++                extra_run_specs = set([])
++                build_deps = set(build_deps or [])
+         else:
+             extra_run_specs = set(extra_run_specs_from_build.get('strong', []))
+             if m.build_is_host:
+
+From 2e867a9aa67c19cc969b889b38484dab252e8a6e Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Fri, 7 Feb 2020 19:14:14 -0600
+Subject: [PATCH 9/9] Fix run_exports list
+
+---
+ conda_build/metadata.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/conda_build/metadata.py b/conda_build/metadata.py
+index 28ef8caec..b64296f9e 100644
+--- a/conda_build/metadata.py
++++ b/conda_build/metadata.py
+@@ -313,9 +313,10 @@ def ensure_matching_hashes(output_metadata):
+             if m != om:
+                 run_exports = om.meta.get('build', {}).get('run_exports', [])
+                 if hasattr(run_exports, 'keys'):
+-                    run_exports = []
++                    run_exports_list = []
+                     for export_type in utils.RUN_EXPORTS_TYPES:
+-                        run_exports = run_exports + run_exports.get(export_type, [])
++                        run_exports_list = run_exports_list + run_exports.get(export_type, [])
++                    run_exports = run_exports_list
+                 deps = _get_all_dependencies(om, envs) + run_exports
+                 for dep in deps:
+                     if (dep.startswith(m.name() + ' ') and len(dep.split(' ')) == 3 and
