@@ -112,7 +112,7 @@ test:
 about:
   home: https://github.com/conda/conda-build
   summary: tools for building conda packages
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
   description: |
