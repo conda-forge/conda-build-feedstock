@@ -3,7 +3,7 @@ About conda-build
 
 Home: https://github.com/conda/conda-build
 
-Package license: BSD 3-Clause
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
