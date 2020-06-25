@@ -11,9 +11,10 @@ source:
   sha256: {{ sha256 }}
   patches:
     - gh3606.patch
+    - gh3925.patch
 
 build:
-  number: 0
+  number: 2
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -26,6 +27,8 @@ build:
     - conda-skeleton = conda_build.cli.main_skeleton:main
 
 requirements:
+  build:
+    - m2-patch           # [win]
   host:
     - python
     - pip
@@ -55,6 +58,7 @@ requirements:
     - conda-package-handling >=1.3
     - python-libarchive-c
     - requests
+    - m2-patch           # [win]
 
   run_constrained:
     - conda-verify  >=3.1.0
