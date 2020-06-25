@@ -3,7 +3,7 @@ About conda-build
 
 Home: https://github.com/conda/conda-build
 
-Package license: BSD 3-Clause
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
@@ -28,7 +28,7 @@ Current build status
     <td>Drone</td>
     <td>
       <a href="https://cloud.drone.io/conda-forge/conda-build-feedstock">
-        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/master.svg?label=Linux">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/conda-build-feedstock/master.svg?label=Linux">
       </a>
     </td>
   </tr>
@@ -225,7 +225,4 @@ Feedstock Maintainers
 * [@pelson](https://github.com/pelson/)
 * [@scopatz](https://github.com/scopatz/)
 * [@stuertz](https://github.com/stuertz/)
-
-
-<!-- dummy commit to enable rerendering -->
 
