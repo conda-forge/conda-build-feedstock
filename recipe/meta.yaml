@@ -12,9 +12,10 @@ source:
   patches:
     - gh3606.patch
     - gh3925.patch
+    - gh4001.patch
 
 build:
-  number: 2
+  number: 3
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
