@@ -12,9 +12,10 @@ source:
   patches:
     - gh3606.patch
     - gh3925.patch
+    - osx-arm64.diff
 
 build:
-  number: 2
+  number: 3
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
