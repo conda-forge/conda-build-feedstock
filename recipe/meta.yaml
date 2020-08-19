@@ -16,7 +16,7 @@ source:
     - osx-arm64.diff
 
 build:
-  number: 3
+  number: 4
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
