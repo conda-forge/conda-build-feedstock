@@ -13,6 +13,7 @@ source:
     - gh3606.patch
     - gh3925.patch
     - gh4001.patch
+    - osx-arm64.diff
 
 build:
   number: 3
