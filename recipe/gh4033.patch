@@ -1,0 +1,23 @@
+From 43ba2dc48c844fc5b7f6d47cb478ad19fb0c8339 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Sun, 30 Aug 2020 15:52:59 -0500
+Subject: [PATCH] Run bash with -e if outputs too
+
+`build.sh` is run with `-e`, but scripts in outputs are not. This commit fixes that.
+---
+ conda_build/build.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conda_build/build.py b/conda_build/build.py
+index 3ca76159c..ebac9b0f3 100644
+--- a/conda_build/build.py
++++ b/conda_build/build.py
+@@ -2353,7 +2353,7 @@ def guess_interpreter(script_filename):
+     # Since the MSYS2 installation is probably a set of conda packages we do not
+     # need to worry about system environmental pollution here. For that reason I
+     # do not pass -l on other OSes.
+-    extensions_to_run_commands = {'.sh': ['bash.exe', '-l'] if utils.on_win else ['bash'],
++    extensions_to_run_commands = {'.sh': ['bash.exe', '-el'] if utils.on_win else ['bash', '-e'],
+                                   '.bat': [os.environ.get('COMSPEC', 'cmd.exe'), '/d', '/c'],
+                                   '.ps1': ['powershell', '-executionpolicy', 'bypass', '-File'],
+                                   '.py': ['python']}
