@@ -9,9 +9,6 @@ package:
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - gh3606.patch
-    - gh4033.patch
 
 build:
   number: 0
