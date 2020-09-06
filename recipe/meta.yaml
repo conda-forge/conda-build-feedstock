@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.20.0" %}
-{% set sha256 = "ecfe82dc0a89ce6548d12ae73771076bb62d61109212f3c04842c61384043249" %}
+{% set version = "3.20.1" %}
+{% set sha256 = "144b1b7773be9c2b7150bfbdfdbcaae65a215e3c9770f3656084b5c94d772769" %}
 
 package:
   name: {{ name }}
@@ -9,9 +9,6 @@ package:
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - gh3606.patch
-    - gh4033.patch
 
 build:
   number: 0
