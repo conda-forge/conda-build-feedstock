@@ -5,9 +5,13 @@ Home: https://github.com/conda/conda-build
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-build-feedstock/blob/master/LICENSE.txt)
 
 Summary: tools for building conda packages
+
+Development: https://github.com/conda/conda-build
+
+Documentation: http://conda.pydata.org/docs/
 
 Conda-build contains commands and tools to allow you to build your own
 packages for conda.
