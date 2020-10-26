@@ -1,6 +1,6 @@
 {% set name = "conda-build" %}
-{% set version = "3.20.4" %}
-{% set sha256 = "01493421cbbd339c9f9f8dcbe0b6dd26e2cebd9228c4656ab696d92499f285d7" %}
+{% set version = "3.20.5" %}
+{% set sha256 = "2986a4d6d47e6db00b6fde988cee24ae1db079c5f4744460588f1cc66a998407" %}
 
 package:
   name: {{ name }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
