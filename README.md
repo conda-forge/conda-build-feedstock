@@ -305,7 +305,6 @@ Feedstock Maintainers
 * [@CJ-Wright](https://github.com/CJ-Wright/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
-* [@jjhelmus](https://github.com/jjhelmus/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@mwcraig](https://github.com/mwcraig/)
