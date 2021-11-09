@@ -1,6 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.21.4" %}
-{% set sha256 = "922c7c74511c514223c4e67a6797efaef11d2c07b01eb2970bf0e55331b7c9a0" %}
+{% set version = "3.21.6" %}
 
 package:
   name: {{ name }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 4ad7b12f474ff72c4ceba2c05f5eec8679ffbdb29578ae4b70ca6ba53a06ba89
 
 build:
   number: 0
@@ -35,19 +34,15 @@ requirements:
     - beautifulsoup4
     - chardet
     - conda  >=4.5
-    - contextlib2        # [py27]
-    - enum34             # [py27]
     - filelock
-    - futures            # [py27]
     - jinja2
     - patchelf           # [linux]
     - pkginfo
     - psutil
     - python
-    - py-lief            # [not (win and py2k)]
+    - py-lief
     - pyyaml
     - ripgrep
-    - scandir            # [py27]
     - setuptools
     - six
     - glob2 >=0.6
@@ -134,3 +129,4 @@ extra:
     - scopatz
     - stuertz
     - CJ-Wright
+    - xhochy
