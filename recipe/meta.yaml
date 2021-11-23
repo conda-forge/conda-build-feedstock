@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
   sha256: 4ad7b12f474ff72c4ceba2c05f5eec8679ffbdb29578ae4b70ca6ba53a06ba89
+  patches:
+    - gh-4335-conda-411-auxlib.patch
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
