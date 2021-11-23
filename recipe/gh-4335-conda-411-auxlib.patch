@@ -1,45 +1,25 @@
-From 93847ecf44513cb5efba7192b179489ff458cca0 Mon Sep 17 00:00:00 2001
+From 6afbf63019a7729086af66def84784c0261d30cb Mon Sep 17 00:00:00 2001
 From: Jannis Leidel <jannis@leidel.info>
 Date: Tue, 23 Nov 2021 15:20:09 +0100
-Subject: [PATCH 1/3] Fix import for auxlib.
+Subject: [PATCH] Fix import for auxlib.
 
 Fix 4333.
+
+Move to conda_interface.
+
+Add news item.
 ---
- conda_build/environ.py | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/conda_build/environ.py b/conda_build/environ.py
-index ca177c5d61..ff12add8a7 100644
---- a/conda_build/environ.py
-+++ b/conda_build/environ.py
-@@ -188,7 +188,10 @@ def get_git_info(git_exe, repo, debug):
-         parts = output.rsplit('-', 2)
-         if len(parts) == 3:
-             d.update(dict(zip(keys, parts)))
--        from conda._vendor.auxlib.packaging import _get_version_from_git_tag
-+        try:
-+            from conda._vendor.auxlib.packaging import _get_version_from_git_tag
-+        except ImportError:
-+            from conda.auxlib.packaging import _get_version_from_git_tag
-         d['GIT_DESCRIBE_TAG_PEP440'] = str(_get_version_from_git_tag(output))
-     except subprocess.CalledProcessError:
-         msg = (
-
-From bcf538bd519727f46f90ae56a5ec93f6e870cc1b Mon Sep 17 00:00:00 2001
-From: Jannis Leidel <jannis@leidel.info>
-Date: Tue, 23 Nov 2021 15:36:42 +0100
-Subject: [PATCH 2/3] Move to conda_interface.
-
----
- conda_build/conda_interface.py | 7 +++++++
- conda_build/environ.py         | 7 ++-----
- 2 files changed, 9 insertions(+), 5 deletions(-)
+ conda_build/conda_interface.py |  7 +++++++
+ conda_build/environ.py         |  4 ++--
+ news/conda-411-auxlib.rst      | 24 ++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+), 2 deletions(-)
+ create mode 100644 news/conda-411-auxlib.rst
 
 diff --git a/conda_build/conda_interface.py b/conda_build/conda_interface.py
-index 6eb3a2fd88..444986fd70 100644
+index 6eb3a2fd..444986fd 100644
 --- a/conda_build/conda_interface.py
 +++ b/conda_build/conda_interface.py
-@@ -31,6 +31,7 @@ def try_exports(module, attr):
+@@ -31,6 +31,7 @@ conda_45 = parse_version(CONDA_VERSION) >= parse_version("4.5.0a0")
  conda_46 = parse_version(CONDA_VERSION) >= parse_version("4.6.0a0")
  conda_47 = parse_version(CONDA_VERSION) >= parse_version("4.7.0a0")
  conda_48 = parse_version(CONDA_VERSION) >= parse_version("4.8.0a0")
@@ -47,7 +27,7 @@ index 6eb3a2fd88..444986fd70 100644
  
  if conda_44:
      from conda.exports import display_actions, execute_actions, execute_plan, install_actions
-@@ -47,6 +48,12 @@ def try_exports(module, attr):
+@@ -47,6 +48,12 @@ except ImportError:
      from conda.toposort import _toposort
  _toposort = _toposort
  
@@ -61,10 +41,10 @@ index 6eb3a2fd88..444986fd70 100644
  from conda.exports import untracked, walk_prefix  # NOQA
  from conda.exports import MatchSpec, NoPackagesFound, Resolve, Unsatisfiable, normalized_version  # NOQA
 diff --git a/conda_build/environ.py b/conda_build/environ.py
-index ff12add8a7..fe19926f33 100644
+index ca177c5d..fe19926f 100644
 --- a/conda_build/environ.py
 +++ b/conda_build/environ.py
-@@ -20,6 +20,7 @@
+@@ -20,6 +20,7 @@ from .conda_interface import memoized
  from .conda_interface import package_cache, TemporaryDirectory
  from .conda_interface import pkgs_dirs, root_dir, create_default_packages
  from .conda_interface import reset_context
@@ -72,33 +52,19 @@ index ff12add8a7..fe19926f33 100644
  
  from conda_build import utils
  from conda_build.exceptions import BuildLockError, DependencyNeedsBuildingError
-@@ -188,11 +189,7 @@ def get_git_info(git_exe, repo, debug):
+@@ -188,8 +189,7 @@ def get_git_info(git_exe, repo, debug):
          parts = output.rsplit('-', 2)
          if len(parts) == 3:
              d.update(dict(zip(keys, parts)))
--        try:
--            from conda._vendor.auxlib.packaging import _get_version_from_git_tag
--        except ImportError:
--            from conda.auxlib.packaging import _get_version_from_git_tag
+-        from conda._vendor.auxlib.packaging import _get_version_from_git_tag
 -        d['GIT_DESCRIBE_TAG_PEP440'] = str(_get_version_from_git_tag(output))
 +        d['GIT_DESCRIBE_TAG_PEP440'] = str(get_version_from_git_tag(output))
      except subprocess.CalledProcessError:
          msg = (
              "Failed to obtain git tag information.\n"
-
-From e877d00147bc771fddafb6fdf249fa2b9eb5b102 Mon Sep 17 00:00:00 2001
-From: Jannis Leidel <jannis@leidel.info>
-Date: Tue, 23 Nov 2021 16:02:46 +0100
-Subject: [PATCH 3/3] Add news item.
-
----
- news/conda-411-auxlib.rst | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
- create mode 100644 news/conda-411-auxlib.rst
-
 diff --git a/news/conda-411-auxlib.rst b/news/conda-411-auxlib.rst
 new file mode 100644
-index 0000000000..8a5a9b64a5
+index 00000000..8a5a9b64
 --- /dev/null
 +++ b/news/conda-411-auxlib.rst
 @@ -0,0 +1,24 @@
@@ -126,3 +92,6 @@ index 0000000000..8a5a9b64a5
 +------
 +
 +* <news item>
+-- 
+2.33.0
+
