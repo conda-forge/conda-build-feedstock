@@ -1,0 +1,97 @@
+From 6afbf63019a7729086af66def84784c0261d30cb Mon Sep 17 00:00:00 2001
+From: Jannis Leidel <jannis@leidel.info>
+Date: Tue, 23 Nov 2021 15:20:09 +0100
+Subject: [PATCH] Fix import for auxlib.
+
+Fix 4333.
+
+Move to conda_interface.
+
+Add news item.
+---
+ conda_build/conda_interface.py |  7 +++++++
+ conda_build/environ.py         |  4 ++--
+ news/conda-411-auxlib.rst      | 24 ++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+), 2 deletions(-)
+ create mode 100644 news/conda-411-auxlib.rst
+
+diff --git a/conda_build/conda_interface.py b/conda_build/conda_interface.py
+index 6eb3a2fd..444986fd 100644
+--- a/conda_build/conda_interface.py
++++ b/conda_build/conda_interface.py
+@@ -31,6 +31,7 @@ conda_45 = parse_version(CONDA_VERSION) >= parse_version("4.5.0a0")
+ conda_46 = parse_version(CONDA_VERSION) >= parse_version("4.6.0a0")
+ conda_47 = parse_version(CONDA_VERSION) >= parse_version("4.7.0a0")
+ conda_48 = parse_version(CONDA_VERSION) >= parse_version("4.8.0a0")
++conda_411 = parse_version(CONDA_VERSION) >= parse_version("4.11.0a0")
+ 
+ if conda_44:
+     from conda.exports import display_actions, execute_actions, execute_plan, install_actions
+@@ -47,6 +48,12 @@ except ImportError:
+     from conda.toposort import _toposort
+ _toposort = _toposort
+ 
++if conda_411:
++    from conda.auxlib.packaging import _get_version_from_git_tag
++else:
++    from conda._vendor.auxlib.packaging import _get_version_from_git_tag
++get_version_from_git_tag = _get_version_from_git_tag
++
+ from conda.exports import TmpDownload, download, handle_proxy_407  # NOQA
+ from conda.exports import untracked, walk_prefix  # NOQA
+ from conda.exports import MatchSpec, NoPackagesFound, Resolve, Unsatisfiable, normalized_version  # NOQA
+diff --git a/conda_build/environ.py b/conda_build/environ.py
+index ca177c5d..fe19926f 100644
+--- a/conda_build/environ.py
++++ b/conda_build/environ.py
+@@ -20,6 +20,7 @@ from .conda_interface import memoized
+ from .conda_interface import package_cache, TemporaryDirectory
+ from .conda_interface import pkgs_dirs, root_dir, create_default_packages
+ from .conda_interface import reset_context
++from .conda_interface import get_version_from_git_tag
+ 
+ from conda_build import utils
+ from conda_build.exceptions import BuildLockError, DependencyNeedsBuildingError
+@@ -188,8 +189,7 @@ def get_git_info(git_exe, repo, debug):
+         parts = output.rsplit('-', 2)
+         if len(parts) == 3:
+             d.update(dict(zip(keys, parts)))
+-        from conda._vendor.auxlib.packaging import _get_version_from_git_tag
+-        d['GIT_DESCRIBE_TAG_PEP440'] = str(_get_version_from_git_tag(output))
++        d['GIT_DESCRIBE_TAG_PEP440'] = str(get_version_from_git_tag(output))
+     except subprocess.CalledProcessError:
+         msg = (
+             "Failed to obtain git tag information.\n"
+diff --git a/news/conda-411-auxlib.rst b/news/conda-411-auxlib.rst
+new file mode 100644
+index 00000000..8a5a9b64
+--- /dev/null
++++ b/news/conda-411-auxlib.rst
+@@ -0,0 +1,24 @@
++Enhancements:
++-------------
++
++* <news item>
++
++Bug fixes:
++----------
++
++* Handle an import from the vendored auxlib library in Conda 4.11.0 better.
++
++Deprecations:
++-------------
++
++* <news item>
++
++Docs:
++-----
++
++* <news item>
++
++Other:
++------
++
++* <news item>
+-- 
+2.33.0
+
