@@ -10,9 +10,10 @@ source:
   sha256: 4ad7b12f474ff72c4ceba2c05f5eec8679ffbdb29578ae4b70ca6ba53a06ba89
   patches:
     - gh-4335-conda-411-auxlib.patch
+    - gh4287.patch
 
 build:
-  number: 2
+  number: 3
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
