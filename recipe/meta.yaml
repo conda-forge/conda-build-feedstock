@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.21.6" %}
+{% set version = "3.21.7" %}
 
 package:
   name: {{ name }}
@@ -7,13 +7,12 @@ package:
 
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
-  sha256: 4ad7b12f474ff72c4ceba2c05f5eec8679ffbdb29578ae4b70ca6ba53a06ba89
+  sha256: fddb305a72adfb2c618b2c670844949978c36c54ce65c2de6ad836fd0e7e2f87
   patches:
-    - gh-4335-conda-411-auxlib.patch
     - gh4287.patch
 
 build:
-  number: 3
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
