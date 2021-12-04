@@ -9,7 +9,6 @@ source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
   sha256: fddb305a72adfb2c618b2c670844949978c36c54ce65c2de6ad836fd0e7e2f87
   patches:
-    - gh-4335-conda-411-auxlib.patch
     - gh4287.patch
 
 build:
