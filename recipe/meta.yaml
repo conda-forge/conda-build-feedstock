@@ -12,7 +12,7 @@ source:
     - gh4287.patch
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
