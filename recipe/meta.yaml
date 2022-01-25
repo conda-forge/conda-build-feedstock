@@ -7,7 +7,7 @@ package:
 
 source:
   url:  https://github.com/conda/conda-build/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 0031aff4a34e66340f90428051d480c6c456c89e267f78cf5987126bee68ca5b
+  sha256: 20fb08f117e07d0e489fbe83603c9acbeecdc2544e8d514e122b9cf3d716a6a9
   patches:
     - gh4287.patch
 
