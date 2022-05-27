@@ -11,6 +11,8 @@ source:
   patches:
     # backport conda/conda-build#4287
     - patches/0001-Remove-rpaths-that-occur-multiple-times.patch
+    # backport conda/conda-build#4482
+    - patches/0002-Fix-for-conda-4.13.0-Python-2.7-removal.patch
 
 build:
   number: 0

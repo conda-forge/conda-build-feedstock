@@ -1,7 +1,7 @@
 From b07dc3af25477cd4b576e02fb9b8b7caa1899f90 Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Thu, 23 Sep 2021 08:19:28 -0700
-Subject: [PATCH] Remove rpaths that occur multiple times
+Subject: [PATCH 1/2] Remove rpaths that occur multiple times
 
 And also remove any rpaths in PREFIX/../ that doesn't start with PREFIX.
 This remove rpaths in BUILD_PREFIX, SRC_DIR, etc
