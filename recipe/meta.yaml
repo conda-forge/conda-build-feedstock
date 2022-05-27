@@ -15,7 +15,7 @@ source:
     - patches/0002-Fix-for-conda-4.13.0-Python-2.7-removal.patch
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
