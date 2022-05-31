@@ -118,6 +118,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - chenghlee
     - isuruf
     - jakirkham
     - mingwandroid
