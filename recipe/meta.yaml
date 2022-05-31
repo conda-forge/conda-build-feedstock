@@ -8,9 +8,6 @@ package:
 source:
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: 19a5568e09ee476c7e9e68e00583f8ff1e4ca16b709e5078552156194ecd14ee
-  patches:
-    # backport conda/conda-build#4287
-    - patches/0001-Remove-rpaths-that-occur-multiple-times.patch
 
 build:
   number: 0
