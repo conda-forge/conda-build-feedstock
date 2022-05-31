@@ -11,7 +11,7 @@ Summary: tools for building conda packages
 
 Development: https://github.com/conda/conda-build
 
-Documentation: http://conda.pydata.org/docs/
+Documentation: https://docs.conda.io/projects/conda-build/en/latest/
 
 Conda-build contains commands and tools to allow you to build your own
 packages for conda.
@@ -325,10 +325,12 @@ Feedstock Maintainers
 =====================
 
 * [@CJ-Wright](https://github.com/CJ-Wright/)
+* [@chenglee](https://github.com/chenglee/)
 * [@cjmartian](https://github.com/cjmartian/)
 * [@dbast](https://github.com/dbast/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@jezdez](https://github.com/jezdez/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@mwcraig](https://github.com/mwcraig/)
