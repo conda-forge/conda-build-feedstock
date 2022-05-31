@@ -118,6 +118,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - chenghlee
     - isuruf
     - jakirkham
     - mingwandroid
@@ -133,4 +134,3 @@ extra:
     - cjmartian
     - dbast
     - jezdez
-    - chenglee
