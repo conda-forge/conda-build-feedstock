@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: 80bdb63f6399c1b418c20b4df998cd891fc205c63132267de4363febb6125b54
   patches:
     # backport conda/conda-build#4287
