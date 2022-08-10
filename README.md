@@ -325,7 +325,7 @@ Feedstock Maintainers
 =====================
 
 * [@CJ-Wright](https://github.com/CJ-Wright/)
-* [@chenglee](https://github.com/chenglee/)
+* [@chenghlee](https://github.com/chenghlee/)
 * [@cjmartian](https://github.com/cjmartian/)
 * [@dbast](https://github.com/dbast/)
 * [@isuruf](https://github.com/isuruf/)
