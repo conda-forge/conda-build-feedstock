@@ -10,7 +10,7 @@ source:
   sha256: d43407a10f383d9445f2fea55a870d6ad2bdb2265701f5da474e2abfa980d95c
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -48,6 +48,7 @@ requirements:
     - six
     - glob2 >=0.6
     - pytz
+    - toml
     - tqdm
     - conda-package-handling >=1.3
     - python-libarchive-c
@@ -72,6 +73,7 @@ test:
 
   imports:
     - conda_build
+    - conda_build.jinja_context
 
   commands:
     # Check for all subcommands
