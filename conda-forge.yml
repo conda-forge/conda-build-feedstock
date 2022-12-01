@@ -10,6 +10,7 @@ provider:
   linux_aarch64: default
   linux_ppc64le: default
 remote_ci_setup:
+  - conda-build>=3.23.2
   - conda-forge-ci-setup=3
   - py-lief>=0.12.3
 test_on_native_only: true
