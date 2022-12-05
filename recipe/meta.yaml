@@ -7,10 +7,12 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: e33cf2dd0fecb887d50d7c0de13902c9e70976016b6eae336e8896892ae57d67
+  sha256: ef14dbb16179b47bef4fa6860c6467a980afa4afc7ff00521ed5c8dd358dc01a
+  patches:
+    - 0001-Fix-Remove-invalid-memoization-for-MetaData.patch
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
