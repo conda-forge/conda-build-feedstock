@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
   sha256: f535f70cbe6a02fb41ced284df97e0d9b9e779131d9ef550644bd5f05ef48f30
-  patches:
-    - 0001-Fix-Remove-invalid-memoization-for-MetaData.patch
 
 build:
   number: 0
