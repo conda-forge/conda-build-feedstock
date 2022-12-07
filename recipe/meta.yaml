@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.23.2" %}
+{% set version = "3.23.3" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: ef14dbb16179b47bef4fa6860c6467a980afa4afc7ff00521ed5c8dd358dc01a
-  patches:
-    - 0001-Fix-Remove-invalid-memoization-for-MetaData.patch
+  sha256: f535f70cbe6a02fb41ced284df97e0d9b9e779131d9ef550644bd5f05ef48f30
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
