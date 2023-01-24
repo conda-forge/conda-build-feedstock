@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: f535f70cbe6a02fb41ced284df97e0d9b9e779131d9ef550644bd5f05ef48f30
+  sha256: 53e9824850822c6a2b44a6b493c8d24161cedec3d74d7dc488278e2bc6ac8ab1
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -44,7 +44,10 @@ requirements:
     - py-lief
     - pyyaml
     - ripgrep
-    - setuptools
+    # setuptools 66 broke conda-build
+    # unpin when the issue below is resolved
+    # https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/3973
+    - setuptools <66.0.0a0
     - six
     - glob2 >=0.6
     - pytz
