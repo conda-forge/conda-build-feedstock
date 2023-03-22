@@ -408,6 +408,7 @@ Feedstock Maintainers
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jezdez](https://github.com/jezdez/)
+* [@kenodegard](https://github.com/kenodegard/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@mwcraig](https://github.com/mwcraig/)
