@@ -12,3 +12,4 @@ provider:
 test_on_native_only: true
 conda_build:
   pkg_format: '2'
+remote-ci-setup: ["conda-forge-ci-setup=3", "packaging"]  # temporary workaround
