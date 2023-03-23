@@ -1,11 +1,11 @@
-About conda-build
-=================
+About conda-build-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-build-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/conda/conda-build
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-build-feedstock/blob/main/LICENSE.txt)
 
 Summary: tools for building conda packages
 
@@ -408,6 +408,7 @@ Feedstock Maintainers
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jezdez](https://github.com/jezdez/)
+* [@kenodegard](https://github.com/kenodegard/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@mwcraig](https://github.com/mwcraig/)
