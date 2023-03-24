@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: e018d415948bdfba969c84e0bd4c7fbc2692372d030ac021f09e40cfe19c7341
+  sha256: d34183a9a01b4cdcea764e700bf64ce8b6a26c9960ac469d4cbf02256dea7a36
 
 build:
   number: 0
