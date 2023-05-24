@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.24.0" %}
+{% set version = "3.25.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: d34183a9a01b4cdcea764e700bf64ce8b6a26c9960ac469d4cbf02256dea7a36
+  sha256: 23df96d2a35096a70bd60b5df19c126ecc3445358b64479f410bbb2196170383
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
