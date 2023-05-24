@@ -46,6 +46,7 @@ requirements:
     - python
     - py-lief
     - pyyaml
+    - ripgrep
     - six
     - glob2 >=0.6
     - pytz
