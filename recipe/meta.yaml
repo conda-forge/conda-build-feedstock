@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.24.0" %}
+{% set version = "3.25.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,11 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: d34183a9a01b4cdcea764e700bf64ce8b6a26c9960ac469d4cbf02256dea7a36
+  sha256: 23df96d2a35096a70bd60b5df19c126ecc3445358b64479f410bbb2196170383
 
 build:
-  number: 1
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:main
     - conda-convert = conda_build.cli.main_convert:main
@@ -24,17 +25,18 @@ build:
 
 requirements:
   build:
-    - patch    >=2.6     # [not win]
-    - m2-patch >=2.6     # [win]
     - python                               # [build_platform != target_platform]
     - cross-python_{{ target_platform }}   # [build_platform != target_platform]
   host:
     - python
     - pip
+    - hatchling >=1.12.2
+    - hatch-vcs >=0.2.0
   run:
     - beautifulsoup4
     - chardet
     - conda  >=4.13
+    - conda-index
     - filelock
     - jinja2
     - packaging
@@ -45,7 +47,6 @@ requirements:
     - py-lief
     - pyyaml
     - ripgrep
-    - setuptools
     - six
     - glob2 >=0.6
     - pytz
@@ -62,13 +63,6 @@ requirements:
     - conda-verify  >=3.1.0
 
 test:
-  # If you run the test suite (~10 min), these are required
-  # requires:
-  #   - pytest
-  #   - pytest-cov
-  #   - pytest-xdist
-  #   - pytest-env
-
   files:
     - test_bdist_conda_setup.py
 
@@ -77,37 +71,20 @@ test:
     - conda_build.jinja_context
 
   commands:
-    # Check for all subcommands
-    - type -P conda-build  # [unix]
-    - where conda-build  # [win]
-    - conda-build -h
-    - type -P conda-convert  # [unix]
-    - where conda-convert  # [win]
-    - conda-convert -h
-    - type -P conda-develop  # [unix]
-    - where conda-develop  # [win]
-    - type -P conda-debug  # [unix]
-    - where conda-debug  # [win]
-    - conda-develop -h
-    - type -P conda-index  # [unix]
-    - where conda-index  # [win]
-    - conda-index -h
-    - type -P conda-inspect  # [unix]
-    - where conda-inspect  # [win]
-    - conda-inspect linkages -h \| grep "--name ENVIRONMENT"  # [unix]
-    - conda-inspect objects -h \| grep "--name ENVIRONMENT"   # [osx]
-    - conda-inspect -h
-    - type -P conda-metapackage  # [unix]
-    - where conda-metapackage  # [win]
-    - conda-metapackage -h
-    - type -P conda-render  # [unix]
-    - where conda-render  # [win]
-    - conda-render -h
-    - type -P conda-skeleton  # [unix]
-    - where conda-skeleton  # [win]
-    - conda-skeleton -h
-
-    # Check for bdist_conda
+    # builtin subcommands
+    - conda --help
+    - conda build --help
+    - conda convert --help
+    - conda debug --help
+    - conda develop --help
+    - conda index --help
+    - conda inspect --help
+    - conda inspect linkages --help  # [unix]
+    - conda inspect objects --help  # [osx]
+    - conda metapackage --help
+    - conda render --help
+    - conda skeleton --help
+    # bdist_conda
     - python test_bdist_conda_setup.py bdist_conda --help
 
 about:
@@ -115,7 +92,7 @@ about:
   summary: tools for building conda packages
   license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE.txt
+  license_file: LICENSE
   description: |
     Conda-build contains commands and tools to allow you to build your own
     packages for conda.
