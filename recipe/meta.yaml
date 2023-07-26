@@ -78,6 +78,9 @@ test:
     - conda debug --help
     - conda develop --help
     - conda index --help
+    - conda inspect --help
+    - conda inspect linkages --help  # [unix]
+    - conda inspect objects --help  # [osx]
     - conda metapackage --help
     - conda render --help
     - conda skeleton --help
