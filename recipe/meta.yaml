@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
   sha256: 1658015711ce4ae5c4a1888ee3f5c20e71f87be646c704927a19b4260c6ecfc8
+  patches:
+    - patches/gh4867.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:main
