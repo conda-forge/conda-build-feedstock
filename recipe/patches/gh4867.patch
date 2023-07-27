@@ -1,17 +1,17 @@
-From 5c99adf66d761205849b77e7fc010b85a7a60377 Mon Sep 17 00:00:00 2001
+From 74c48facd64e9c682e9387b186ef0b08a9b52548 Mon Sep 17 00:00:00 2001
 From: Finn Womack <finnwomack@microsoft.com>
 Date: Thu, 20 Apr 2023 13:58:00 -0700
-Subject: [PATCH 01/10] add warning and return empty string
+Subject: [PATCH 1/8] add warning and return empty string
 
 ---
  conda_build/windows.py | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/conda_build/windows.py b/conda_build/windows.py
-index ffaad7f5ca..42ad8af748 100644
+index 84da4a0f..af6c6b2b 100644
 --- a/conda_build/windows.py
 +++ b/conda_build/windows.py
-@@ -108,6 +108,11 @@ def msvc_env_cmd(bits, config, override=None):
+@@ -110,6 +110,11 @@ def msvc_env_cmd(bits, config, override=None):
          "If this recipe does not use a compiler, this message is safe to ignore.  "
          "Otherwise, use {{compiler('<language>')}} jinja2 in requirements/build."
      )
@@ -23,33 +23,14 @@ index ffaad7f5ca..42ad8af748 100644
      if override:
          log.warn(
              "msvc_compiler key in meta.yaml is deprecated. Use the new"
+-- 
+2.38.1
 
-From 9c70251111290812cadb321b38dee5b8a95f783e Mon Sep 17 00:00:00 2001
-From: Finn Womack <flan313@gmail.com>
-Date: Tue, 25 Apr 2023 12:59:35 -0700
-Subject: [PATCH 02/10] Run tests in branch
 
----
- .github/workflows/tests.yml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
-index da7637be2a..c681fdc56e 100644
---- a/.github/workflows/tests.yml
-+++ b/.github/workflows/tests.yml
-@@ -10,6 +10,7 @@ on:
-     branches:
-       - main
-       - feature/**
-+      - msvc-env-cmd
- 
-   # NOTE: github.event context is pull_request payload:
-   # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
-
-From 9fdb425c56d28ecbbcbbc1a1a32843b64eaa4a5d Mon Sep 17 00:00:00 2001
+From e04874b64fbe7392d0c6250b5204ab6fb42c21d1 Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Tue, 25 Apr 2023 15:25:47 -0700
-Subject: [PATCH 03/10] Update windows.py
+Subject: [PATCH 2/8] Update windows.py
 
 bit -> bits
 ---
@@ -57,10 +38,10 @@ bit -> bits
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/conda_build/windows.py b/conda_build/windows.py
-index 42ad8af748..700f5c28ff 100644
+index af6c6b2b..f1b2eb2f 100644
 --- a/conda_build/windows.py
 +++ b/conda_build/windows.py
-@@ -108,7 +108,7 @@ def msvc_env_cmd(bits, config, override=None):
+@@ -110,7 +110,7 @@ def msvc_env_cmd(bits, config, override=None):
          "If this recipe does not use a compiler, this message is safe to ignore.  "
          "Otherwise, use {{compiler('<language>')}} jinja2 in requirements/build."
      )
@@ -69,33 +50,14 @@ index 42ad8af748..700f5c28ff 100644
          log.warn(
              "The legacy MSVC compiler setup does not support arm64 builds. "
          )
+-- 
+2.38.1
 
-From a68f0ac5a748e2d0a587f06bbacaf048786f1d67 Mon Sep 17 00:00:00 2001
-From: Finn Womack <flan313@gmail.com>
-Date: Wed, 3 May 2023 11:00:08 -0700
-Subject: [PATCH 04/10] remove added branch
 
----
- .github/workflows/tests.yml | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
-index 7fe6ffc981..19062be01a 100644
---- a/.github/workflows/tests.yml
-+++ b/.github/workflows/tests.yml
-@@ -11,7 +11,6 @@ on:
-       - main
-       - feature/**
-       - '[0-9].*.x'  # e.g., 3.24.x
--      - msvc-env-cmd
- 
-   # NOTE: github.event context is pull_request payload:
-   # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
-
-From 176f793f7149ef69ba5f7aa91ebdef8f681442d0 Mon Sep 17 00:00:00 2001
+From e249ed9a2cb136482c1ecb408a25a78b5a38e1e3 Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Thu, 4 May 2023 12:32:20 -0700
-Subject: [PATCH 05/10] Create news file
+Subject: [PATCH 3/8] Create news file
 
 ---
  news/made-msvc_env_cmd-no-op-for-arm64 | 19 +++++++++++++++++++
@@ -104,7 +66,7 @@ Subject: [PATCH 05/10] Create news file
 
 diff --git a/news/made-msvc_env_cmd-no-op-for-arm64 b/news/made-msvc_env_cmd-no-op-for-arm64
 new file mode 100644
-index 0000000000..a20af0a2ff
+index 00000000..a20af0a2
 --- /dev/null
 +++ b/news/made-msvc_env_cmd-no-op-for-arm64
 @@ -0,0 +1,19 @@
@@ -127,11 +89,14 @@ index 0000000000..a20af0a2ff
 +### Other
 +
 +* Added a check to print an additional warning and return an empty string when bits is "arm64" in msvc_env_cmd
+-- 
+2.38.1
 
-From 3a9f4d5890f2f937e1a3513b2f7b97760439e6e3 Mon Sep 17 00:00:00 2001
+
+From 679525e439278ced5e978113abf90d975ef317db Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Thu, 4 May 2023 12:33:22 -0700
-Subject: [PATCH 06/10] Changed news file name
+Subject: [PATCH 4/8] Changed news file name
 
 ---
  ..._env_cmd-no-op-for-arm64 => made-msvc-env-cmd-no-op-for-arm64} | 0
@@ -142,11 +107,14 @@ diff --git a/news/made-msvc_env_cmd-no-op-for-arm64 b/news/made-msvc-env-cmd-no-
 similarity index 100%
 rename from news/made-msvc_env_cmd-no-op-for-arm64
 rename to news/made-msvc-env-cmd-no-op-for-arm64
+-- 
+2.38.1
 
-From 69b231c09ab962d9be1aa4219e0bfdefb84eefce Mon Sep 17 00:00:00 2001
+
+From 0a91c6b586857edac7d3cd5e3ab21de1789d83f9 Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Thu, 4 May 2023 12:34:16 -0700
-Subject: [PATCH 07/10] Rename made-msvc-env-cmd-no-op-for-arm64 to
+Subject: [PATCH 5/8] Rename made-msvc-env-cmd-no-op-for-arm64 to
  arm64-msvc-env-cmd
 
 ---
@@ -158,11 +126,14 @@ diff --git a/news/made-msvc-env-cmd-no-op-for-arm64 b/news/arm64-msvc-env-cmd
 similarity index 100%
 rename from news/made-msvc-env-cmd-no-op-for-arm64
 rename to news/arm64-msvc-env-cmd
+-- 
+2.38.1
 
-From 1b46fa62272bc67d53454e78f25bef90f33fc9db Mon Sep 17 00:00:00 2001
+
+From f47ebd528f00a421095cb349348d36f05facaf85 Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Thu, 4 May 2023 12:34:54 -0700
-Subject: [PATCH 08/10] Rename arm64-msvc-env-cmd to arm64-msvc-env-cmd-no-op
+Subject: [PATCH 6/8] Rename arm64-msvc-env-cmd to arm64-msvc-env-cmd-no-op
 
 ---
  news/{arm64-msvc-env-cmd => arm64-msvc-env-cmd-no-op} | 0
@@ -173,11 +144,14 @@ diff --git a/news/arm64-msvc-env-cmd b/news/arm64-msvc-env-cmd-no-op
 similarity index 100%
 rename from news/arm64-msvc-env-cmd
 rename to news/arm64-msvc-env-cmd-no-op
+-- 
+2.38.1
 
-From 37f68ea8367e16e4768520d71ab9ed7dc6989b2d Mon Sep 17 00:00:00 2001
+
+From 477a7b7d79a774a43fcfc12ace5cf4236f2c6b15 Mon Sep 17 00:00:00 2001
 From: Finn Womack <flan313@gmail.com>
 Date: Thu, 4 May 2023 13:13:38 -0700
-Subject: [PATCH 09/10] Rename arm64-msvc-env-cmd-no-op to
+Subject: [PATCH 7/8] Rename arm64-msvc-env-cmd-no-op to
  4867-arm64-msvc-env-cmd-no-op
 
 ---
@@ -189,12 +163,15 @@ diff --git a/news/arm64-msvc-env-cmd-no-op b/news/4867-arm64-msvc-env-cmd-no-op
 similarity index 100%
 rename from news/arm64-msvc-env-cmd-no-op
 rename to news/4867-arm64-msvc-env-cmd-no-op
+-- 
+2.38.1
 
-From b2c65e4bd24630a7a79664f42203782904f0813b Mon Sep 17 00:00:00 2001
+
+From ea9594bb5476b320a8fb26093a6d7452bcd046e8 Mon Sep 17 00:00:00 2001
 From: "pre-commit-ci[bot]"
  <66853113+pre-commit-ci[bot]@users.noreply.github.com>
 Date: Tue, 9 May 2023 11:00:52 +0000
-Subject: [PATCH 10/10] [pre-commit.ci] auto fixes from pre-commit.com hooks
+Subject: [PATCH 8/8] [pre-commit.ci] auto fixes from pre-commit.com hooks
 
 for more information, see https://pre-commit.ci
 ---
@@ -202,10 +179,10 @@ for more information, see https://pre-commit.ci
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/conda_build/windows.py b/conda_build/windows.py
-index 700f5c28ff..c2497580f0 100644
+index f1b2eb2f..1639c554 100644
 --- a/conda_build/windows.py
 +++ b/conda_build/windows.py
-@@ -109,9 +109,7 @@ def msvc_env_cmd(bits, config, override=None):
+@@ -111,9 +111,7 @@ def msvc_env_cmd(bits, config, override=None):
          "Otherwise, use {{compiler('<language>')}} jinja2 in requirements/build."
      )
      if bits == "arm64":
@@ -216,3 +193,6 @@ index 700f5c28ff..c2497580f0 100644
          return ""
      if override:
          log.warn(
+-- 
+2.38.1
+
