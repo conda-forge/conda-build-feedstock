@@ -1,0 +1,48 @@
+From 74c48facd64e9c682e9387b186ef0b08a9b52548 Mon Sep 17 00:00:00 2001
+From: Finn Womack <finnwomack@microsoft.com>
+Date: Thu, 20 Apr 2023 13:58:00 -0700
+Subject: [PATCH 1/8] add warning and return empty string
+
+---
+ conda_build/windows.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/conda_build/windows.py b/conda_build/windows.py
+index 84da4a0f..1639c554 100644
+--- a/conda_build/windows.py
++++ b/conda_build/windows.py
+@@ -110,6 +110,9 @@ def msvc_env_cmd(bits, config, override=None):
+         "If this recipe does not use a compiler, this message is safe to ignore.  "
+         "Otherwise, use {{compiler('<language>')}} jinja2 in requirements/build."
+     )
++    if bits == "arm64":
++        log.warn("The legacy MSVC compiler setup does not support arm64 builds. ")
++        return ""
+     if override:
+         log.warn(
+             "msvc_compiler key in meta.yaml is deprecated. Use the new"
+diff --git a/news/4867-arm64-msvc-env-cmd-no-op b/news/4867-arm64-msvc-env-cmd-no-op
+new file mode 100644
+index 00000000..a20af0a2
+--- /dev/null
++++ b/news/4867-arm64-msvc-env-cmd-no-op
+@@ -0,0 +1,19 @@
++### Enhancements
++
++* <news item>
++
++### Bug fixes
++
++* <news item>
++
++### Deprecations
++
++* <news item>
++
++### Docs
++
++* <news item>
++
++### Other
++
++* Added a check to print an additional warning and return an empty string when bits is "arm64" in msvc_env_cmd
