@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.26.0" %}
+{% set version = "3.26.1" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 1658015711ce4ae5c4a1888ee3f5c20e71f87be646c704927a19b4260c6ecfc8
+  sha256: 8cc268a45c94347f67e22c13afec9a6cc02bf32dadccd8fa1b578cf5cec22987
   patches:
     - patches/gh4867.patch
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:main
@@ -80,9 +80,6 @@ test:
     - conda debug --help
     - conda develop --help
     - conda index --help
-    - conda inspect --help
-    - conda inspect linkages --help  # [unix]
-    - conda inspect objects --help  # [osx]
     - conda metapackage --help
     - conda render --help
     - conda skeleton --help
