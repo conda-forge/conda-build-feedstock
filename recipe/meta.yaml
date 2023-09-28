@@ -37,7 +37,7 @@ requirements:
   run:
     - beautifulsoup4
     - chardet
-    - conda  >=4.13
+    - conda >=22.11.0
     - conda-index
     - filelock
     - jinja2
@@ -50,7 +50,6 @@ requirements:
     - pyyaml
     - ripgrep
     - six
-    - glob2 >=0.6
     - pytz
     - tomli         # [py<311]
     - tqdm
