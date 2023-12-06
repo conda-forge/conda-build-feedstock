@@ -71,7 +71,11 @@ test:
     - conda_build
     - conda_build.jinja_context
 
+  requires:
+    - pip
+
   commands:
+    - python -m pip check
     # builtin subcommands
     - conda --help
     - conda build --help
