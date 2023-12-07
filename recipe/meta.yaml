@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.28.0" %}
+{% set version = "3.28.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: efc713ba0cfe75a9ef3c0a6b2e7455ca89c1e9d298f15b75d769c0c47cc2e67f
+  sha256: 5df6757f2762574f26f66e0652f1cb0debb0079ed7b0f6732e612b3882e64967
   patches:
     - patches/gh4867.patch
 
@@ -71,7 +71,11 @@ test:
     - conda_build
     - conda_build.jinja_context
 
+  requires:
+    - pip
+
   commands:
+    - python -m pip check
     # builtin subcommands
     - conda --help
     - conda build --help
