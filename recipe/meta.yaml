@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "3.28.1" %}
+{% set version = "3.28.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 5df6757f2762574f26f66e0652f1cb0debb0079ed7b0f6732e612b3882e64967
+  sha256: a2e580e70660be570b181b72652f4092e80136021e762a3b00e69e559e394d1e
   patches:
     - patches/gh4867.patch
 
