@@ -79,6 +79,7 @@ test:
     - conda --help
     - conda build --help
     - conda convert --help
+    - conda debug --help
     - conda develop --help
     - conda inspect --help
     - conda inspect linkages --help  # [unix]
@@ -86,10 +87,10 @@ test:
     - conda metapackage --help
     - conda render --help
     - conda skeleton --help
-    - conda debug --help
     # entrypoints
     - conda-build --help
     - conda-convert --help
+    - conda-debug --help
     - conda-develop --help
     - conda-inspect --help
     - conda-inspect linkages --help  # [unix]
@@ -97,7 +98,6 @@ test:
     - conda-metapackage --help
     - conda-render --help
     - conda-skeleton --help
-    - conda-debug --help
     # bdist_conda
     - python test_bdist_conda_setup.py bdist_conda --help
 
