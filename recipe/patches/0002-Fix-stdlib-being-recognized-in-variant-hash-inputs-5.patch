@@ -1,0 +1,128 @@
+From f3ff2a6ef575363e919d3249b8b3e9e8429186ee Mon Sep 17 00:00:00 2001
+From: Marcel Bargull <mbargull@users.noreply.github.com>
+Date: Wed, 28 Feb 2024 17:06:00 +0100
+Subject: [PATCH 2/2] Fix stdlib being recognized in variant hash inputs
+ (#5195)
+
+* Test stdlib is recognized in variant hash inputs
+* Fix stdlib being recognized in variant hash inputs
+* Test c_stdlib* inclusion in Metadata.get_used_vars
+
+This function is used downstream in conda-forge's conda-smithy, so let's
+test against this explicitly, too.
+
+---------
+
+Signed-off-by: Marcel Bargull <marcel.bargull@udo.edu>
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+---
+ conda_build/variants.py      | 18 ++++++++++--------
+ news/5195-fix-stdlib-variant | 19 +++++++++++++++++++
+ tests/test_metadata.py       | 19 ++++++++++++-------
+ 3 files changed, 41 insertions(+), 15 deletions(-)
+ create mode 100644 news/5195-fix-stdlib-variant
+
+diff --git a/conda_build/variants.py b/conda_build/variants.py
+index d798a6e7..2ece5f4b 100644
+--- a/conda_build/variants.py
++++ b/conda_build/variants.py
+@@ -727,15 +727,17 @@ def find_used_variables_in_text(variant, recipe_text, selectors_only=False):
+     recipe_lines = recipe_text.splitlines()
+     for v in variant:
+         all_res = []
+-        compiler_match = re.match(r"(.*?)_compiler(_version)?$", v)
+-        if compiler_match and not selectors_only:
+-            compiler_lang = compiler_match.group(1)
+-            compiler_regex = r"\{\s*compiler\([\'\"]%s[\"\'][^\{]*?\}" % re.escape(
+-                compiler_lang
++        target_match = re.match(r"(.*?)_(compiler|stdlib)(_version)?$", v)
++        if target_match and not selectors_only:
++            target_lang = target_match.group(1)
++            target_kind = target_match.group(2)
++            target_lang_regex = re.escape(target_lang)
++            target_regex = (
++                rf"\{{\s*{target_kind}\([\'\"]{target_lang_regex}[\"\'][^\{{]*?\}}"
+             )
+-            all_res.append(compiler_regex)
++            all_res.append(target_regex)
+             variant_lines = [
+-                line for line in recipe_lines if v in line or compiler_lang in line
++                line for line in recipe_lines if v in line or target_lang in line
+             ]
+         else:
+             variant_lines = [
+@@ -760,7 +762,7 @@ def find_used_variables_in_text(variant, recipe_text, selectors_only=False):
+         all_res = r"|".join(all_res)
+         if any(re.search(all_res, line) for line in variant_lines):
+             used_variables.add(v)
+-            if v in ("c_compiler", "cxx_compiler"):
++            if v in ("c_stdlib", "c_compiler", "cxx_compiler"):
+                 if "CONDA_BUILD_SYSROOT" in variant:
+                     used_variables.add("CONDA_BUILD_SYSROOT")
+     return used_variables
+diff --git a/news/5195-fix-stdlib-variant b/news/5195-fix-stdlib-variant
+new file mode 100644
+index 00000000..526692f2
+--- /dev/null
++++ b/news/5195-fix-stdlib-variant
+@@ -0,0 +1,19 @@
++### Enhancements
++
++* <news item>
++
++### Bug fixes
++
++* Fix stdlib being recognized in variant hash inputs. (#5190 via #5195)
++
++### Deprecations
++
++* <news item>
++
++### Docs
++
++* <news item>
++
++### Other
++
++* <news item>
+diff --git a/tests/test_metadata.py b/tests/test_metadata.py
+index 05e67b54..e89cb5fe 100644
+--- a/tests/test_metadata.py
++++ b/tests/test_metadata.py
+@@ -230,16 +230,16 @@ def test_compiler_metadata_cross_compiler():
+ 
+ 
+ @pytest.mark.parametrize(
+-    "platform,arch,stdlibs",
++    "platform,arch,stdlib,stdlib_version",
+     [
+-        ("linux", "64", {"sysroot_linux-64 2.12.*"}),
+-        ("linux", "aarch64", {"sysroot_linux-aarch64 2.17.*"}),
+-        ("osx", "64", {"macosx_deployment_target_osx-64 10.13.*"}),
+-        ("osx", "arm64", {"macosx_deployment_target_osx-arm64 11.0.*"}),
++        ("linux", "64", "sysroot", "2.12"),
++        ("linux", "aarch64", "sysroot", "2.17"),
++        ("osx", "64", "macosx_deployment_target", "10.13"),
++        ("osx", "arm64", "macosx_deployment_target", "11.0"),
+     ],
+ )
+ def test_native_stdlib_metadata(
+-    platform: str, arch: str, stdlibs: set[str], testing_config
++    platform: str, arch: str, stdlib: str, stdlib_version: str, testing_config
+ ):
+     testing_config.platform = platform
+     metadata = api.render(
+@@ -253,7 +253,12 @@ def test_native_stdlib_metadata(
+         bypass_env_check=True,
+         python="3.11",  # irrelevant
+     )[0][0]
+-    assert stdlibs <= set(metadata.meta["requirements"]["host"])
++    stdlib_req = f"{stdlib}_{platform}-{arch} {stdlib_version}.*"
++    assert stdlib_req in metadata.meta["requirements"]["host"]
++    assert {"c_stdlib", "c_stdlib_version"} <= metadata.get_used_vars()
++    hash_contents = metadata.get_hash_contents()
++    assert stdlib == hash_contents["c_stdlib"]
++    assert stdlib_version == hash_contents["c_stdlib_version"]
+ 
+ 
+ def test_hash_build_id(testing_metadata):

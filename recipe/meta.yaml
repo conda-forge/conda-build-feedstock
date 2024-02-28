@@ -9,10 +9,13 @@ source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
   sha256: c534d2cccfba8d8bab85ae54cd02ffc1c02037dbbea394dda3b55b668ab35f1f
   patches:
-    - patches/gh4867.patch
+    # backport https://github.com/conda/conda-build/pull/4867
+    - patches/0001-add-warning-and-return-empty-string.patch
+    # backport https://github.com/conda/conda-build/pull/5195
+    - patches/0002-Fix-stdlib-being-recognized-in-variant-hash-inputs-5.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
