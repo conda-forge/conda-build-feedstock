@@ -11,5 +11,4 @@ provider:
   linux_ppc64le: default
 conda_build:
   pkg_format: '2'
-remote-ci-setup: [conda-forge-ci-setup=3, packaging]      # temporary workaround
 test: native_and_emulated
