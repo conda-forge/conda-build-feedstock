@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
   sha256: 961ecb2ab22179191cdacd9074afdc0f5ed50f10dc54577c5b8792798d0edce1
-  patches:
-    - patches/gh4867.patch
 
 build:
   number: 0
