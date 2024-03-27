@@ -10,7 +10,7 @@ source:
   sha256: 78d056dc0876d4c4a2983f1aeea51db2888c047638bf8a6b0fd863b12001bbb9
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
