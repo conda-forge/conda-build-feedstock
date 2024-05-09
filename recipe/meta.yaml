@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "24.3.0" %}
+{% set version = "24.5.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 78d056dc0876d4c4a2983f1aeea51db2888c047638bf8a6b0fd863b12001bbb9
+  sha256: 97938c7940777d014ded9b3031e8ae0bf516e68937ffb4f43075ea5ffccc1d24
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -78,9 +78,6 @@ test:
     - conda build --help
     - conda convert --help
     - conda develop --help
-    - conda inspect --help
-    - conda inspect linkages --help  # [unix]
-    - conda inspect objects --help  # [osx]
     - conda metapackage --help
     - conda render --help
     - conda skeleton --help
