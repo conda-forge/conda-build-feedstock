@@ -62,9 +62,6 @@ requirements:
     - conda-verify  >=3.1.0
 
 test:
-  files:
-    - test_bdist_conda_setup.py
-
   imports:
     - conda_build
     - conda_build.jinja_context
@@ -97,8 +94,6 @@ test:
     - conda-render --help
     - conda-skeleton --help
     - conda-debug --help
-    # bdist_conda
-    - python test_bdist_conda_setup.py bdist_conda --help
 
 about:
   home: https://github.com/conda/conda-build
