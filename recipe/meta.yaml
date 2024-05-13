@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 97938c7940777d014ded9b3031e8ae0bf516e68937ffb4f43075ea5ffccc1d24
+  sha256: 019a2893af9fb2e1aceed4ff66cabff35e0717195f25e90bed0dc1c119b4814a
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
