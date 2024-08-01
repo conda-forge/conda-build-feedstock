@@ -1,13 +1,13 @@
 {% set name = "conda-build" %}
-{% set version = "24.5.1" %}
+{% set version = "24.7.1" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/conda/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 04fc40032bb35ea6b9bb18009643daf8f522e12a7e397516a9b2fa64b7f4927a
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: be805c420edaa2ad7626064c08d2767fd7e1bbc5e32309bb5a1f2a1058512078
 
 build:
   number: 0
@@ -37,7 +37,7 @@ requirements:
     - chardet
     - conda >=23.7.0
     - conda-index >=0.4.0
-    - conda-package-handling >=1.3
+    - conda-package-handling >=2.2.0
     - filelock
     - frozendict >=2.4.2
     - jinja2
