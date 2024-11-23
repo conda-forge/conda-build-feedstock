@@ -1,107 +1,96 @@
 {% set name = "conda-build" %}
-{% set version = "3.17.8" %}
-{% set sha256 = "4041cbe33b3e67966725abf816e94e964f730590faafc1201166b852a58c2133" %}
+{% set version = "24.9.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name}}-{{ version }}.tar.gz
-  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: bc5d358f422fadeac7ec8d8fed499be0ee2cd3815ba1ab9c89db2081eebe6deb
 
 build:
   number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
-    - conda-build = conda_build.cli.main_build:main
-    - conda-convert = conda_build.cli.main_convert:main
-    - conda-debug = conda_build.cli.main_debug:main
-    - conda-develop = conda_build.cli.main_develop:main
-    - conda-index = conda_build.cli.main_index:main
-    - conda-inspect = conda_build.cli.main_inspect:main
-    - conda-metapackage = conda_build.cli.main_metapackage:main
-    - conda-render = conda_build.cli.main_render:main
-    - conda-skeleton = conda_build.cli.main_skeleton:main
+    - conda-build = conda_build.cli.main_build:execute
+    - conda-convert = conda_build.cli.main_convert:execute
+    - conda-debug = conda_build.cli.main_debug:execute
+    - conda-develop = conda_build.cli.main_develop:execute
+    - conda-inspect = conda_build.cli.main_inspect:execute
+    - conda-metapackage = conda_build.cli.main_metapackage:execute
+    - conda-render = conda_build.cli.main_render:execute
+    - conda-skeleton = conda_build.cli.main_skeleton:execute
 
 requirements:
+  build:
+    - python                               # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}   # [build_platform != target_platform]
   host:
     - python
     - pip
+    - hatchling >=1.12.2
+    - hatch-vcs >=0.2.0
   run:
     - beautifulsoup4
+    - cctools            # [osx]
     - chardet
-    - conda  >=4.3
-    - contextlib2        # [py27]
-    - enum34             # [py27]
+    - conda >=23.7.0
+    - conda-index >=0.4.0
+    - conda-package-handling >=2.2.0
     - filelock
-    - futures            # [py27]
-    - glob2 >=0.6        # [py27]
+    - frozendict >=2.4.2
     - jinja2
-    - python-libarchive-c
-    - patchelf      # [linux]
+    - jsonschema >=4.19
+    - m2-patch >=2.6     # [win]
+    - menuinst >=2
+    - packaging
+    - patch >=2.6        # [not win]
+    - patchelf           # [linux]
     - pkginfo
     - psutil
+    - py-lief
     - python
-    - py-lief  # [not (win and py2k)]
-    - pyyaml
-    - scandir            # [py27]
-    - six
-    - glob2 >=0.6
+    - python-libarchive-c
     - pytz
+    - pyyaml
+    - requests
+    - ripgrep
+    - tomli         # [py<311]
     - tqdm
-
   run_constrained:
     - conda-verify  >=3.1.0
 
 test:
-  # If you run the test suite (~10 min), these are required
-  # requires:
-  #   - pytest
-  #   - pytest-cov
-  #   - pytest-catchlog
-  #   - pytest-xdist
-  #   - pytest-env
-
-  files:
-    - test_bdist_conda_setup.py
-
   imports:
     - conda_build
+    - conda_build.jinja_context
+
+  requires:
+    - pip
 
   commands:
-    # Check for all subcommands
-    - type -P conda-build  # [unix]
-    - where conda-build  # [win]
-    - conda-build -h
-    - type -P conda-convert  # [unix]
-    - where conda-convert  # [win]
-    - conda-convert -h
-    - type -P conda-develop  # [unix]
-    - where conda-develop  # [win]
-    - type -P conda-debug  # [unix]
-    - where conda-debug  # [win]
-    - conda-develop -h
-    - type -P conda-index  # [unix]
-    - where conda-index  # [win]
-    - conda-index -h
-    - type -P conda-inspect  # [unix]
-    - where conda-inspect  # [win]
-    - conda-inspect linkages -h \| grep "--name ENVIRONMENT"  # [unix]
-    - conda-inspect objects -h \| grep "--name ENVIRONMENT"   # [osx]
-    - conda-inspect -h
-    - type -P conda-metapackage  # [unix]
-    - where conda-metapackage  # [win]
-    - conda-metapackage -h
-    - type -P conda-render  # [unix]
-    - where conda-render  # [win]
-    - conda-render -h
-    - type -P conda-skeleton  # [unix]
-    - where conda-skeleton  # [win]
-    - conda-skeleton -h
-
-    # Check for bdist_conda
-    - python test_bdist_conda_setup.py bdist_conda --help
+    - python -m pip check
+    # subcommands
+    - conda --help
+    - conda build --help
+    - conda convert --help
+    - conda develop --help
+    - conda metapackage --help
+    - conda render --help
+    - conda skeleton --help
+    - conda debug --help
+    # entrypoints
+    - conda-build --help
+    - conda-convert --help
+    - conda-develop --help
+    - conda-inspect --help
+    - conda-inspect linkages --help  # [unix]
+    - conda-inspect objects --help  # [osx]
+    - conda-metapackage --help
+    - conda-render --help
+    - conda-skeleton --help
+    - conda-debug --help
 
   downstreams:
     - conda-smithy
@@ -109,19 +98,20 @@ test:
 about:
   home: https://github.com/conda/conda-build
   summary: tools for building conda packages
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE.txt
+  license_file: LICENSE
   description: |
     Conda-build contains commands and tools to allow you to build your own
     packages for conda.
-  doc_url: http://conda.pydata.org/docs/
+  doc_url: https://docs.conda.io/projects/conda-build/en/latest/
   dev_url: https://github.com/conda/conda-build
 
 extra:
   recipe-maintainers:
+    - chenghlee
+    - isuruf
     - jakirkham
-    - jjhelmus
     - mingwandroid
     - msarahan
     - mwcraig
@@ -131,3 +121,9 @@ extra:
     - scopatz
     - stuertz
     - CJ-Wright
+    - xhochy
+    - cjmartian
+    - dbast
+    - jezdez
+    - kenodegard
+    - beeankha
