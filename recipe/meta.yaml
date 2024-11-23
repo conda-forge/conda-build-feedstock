@@ -93,7 +93,7 @@ test:
     - conda-debug --help
 
   downstreams:
-    - conda-smithy
+    - conda-smithy  # [py>=311]
 
 about:
   home: https://github.com/conda/conda-build
