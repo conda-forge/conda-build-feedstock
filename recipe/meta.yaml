@@ -10,7 +10,7 @@ source:
   sha256: bc5d358f422fadeac7ec8d8fed499be0ee2cd3815ba1ab9c89db2081eebe6deb
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -91,6 +91,9 @@ test:
     - conda-render --help
     - conda-skeleton --help
     - conda-debug --help
+
+  downstreams:
+    - conda-smithy  # [py>=311]
 
 about:
   home: https://github.com/conda/conda-build
