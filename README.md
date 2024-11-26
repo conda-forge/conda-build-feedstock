@@ -350,6 +350,3 @@ Feedstock Maintainers
 * [@stuertz](https://github.com/stuertz/)
 * [@xhochy](https://github.com/xhochy/)
 
-
-<!-- dummy commit to enable rerendering -->
-
