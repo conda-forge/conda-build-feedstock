@@ -15,7 +15,9 @@ build:
   number: 2
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
-    - conda-build = conda_build.cli.main_build:execute
+    # from https://github.com/conda/conda-build/pull/5417
+    # can be removed once this PR is shipped
+    - conda-build = conda_build.cli.main_build:execute  # [version == "24.11.1"]
     - conda-convert = conda_build.cli.main_convert:execute
     - conda-debug = conda_build.cli.main_debug:execute
     - conda-develop = conda_build.cli.main_develop:execute
