@@ -1,0 +1,27 @@
+From 0b2e9e3005255e92df4cc1be359edc04fd5c2ff6 Mon Sep 17 00:00:00 2001
+From: Cornelius Roemer <cornelius.roemer@gmail.com>
+Date: Thu, 18 Jul 2024 23:47:33 +0200
+Subject: [PATCH] fix: use copy(v) which works also on str, instead of v.copy()
+ which doesn't
+
+resolves #5416
+resolves #3404 (closed because stale, not because fixed)
+
+Bug was possibly introduced in #3344
+---
+ conda_build/variants.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conda_build/variants.py b/conda_build/variants.py
+index b185a7eb34..fe659067e8 100644
+--- a/conda_build/variants.py
++++ b/conda_build/variants.py
+@@ -328,7 +328,7 @@ def _combine_spec_dictionaries(
+                                     ) != len(ensure_list(v)):
+                                         break
+                                 else:
+-                                    values[k] = v.copy()
++                                    values[k] = copy(v)
+                                 missing_subvalues = [
+                                     subvalue
+                                     for subvalue in ensure_list(v)
