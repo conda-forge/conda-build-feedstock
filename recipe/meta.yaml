@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "24.11.1" %}
+{% set version = "24.11.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1fafd20caa758862bb1b51cebf1bd87cf7c01cf41b7eaa5ed9d6de8e08e829c6
+  sha256: 37aeb71e3bfc528299048a9fa1bd4afb63574be09cc84f7853c774fb2d9ba837
   {% if version == "24.11.1" %}
   patches:
     # from https://github.com/conda/conda-build/pull/5417
@@ -16,7 +16,7 @@ source:
   {% endif %}
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
