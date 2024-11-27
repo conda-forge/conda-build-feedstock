@@ -8,12 +8,6 @@ package:
 source:
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 37aeb71e3bfc528299048a9fa1bd4afb63574be09cc84f7853c774fb2d9ba837
-  {% if version == "24.11.1" %}
-  patches:
-    # from https://github.com/conda/conda-build/pull/5417
-    # can be removed once this PR is shipped
-    - 0001-patch-str-copy.patch
-  {% endif %}
 
 build:
   number: 0
