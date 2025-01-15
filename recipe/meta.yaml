@@ -49,7 +49,7 @@ requirements:
     - patchelf           # [linux]
     - pkginfo
     - psutil
-    - py-lief
+    - py-lief <0.16
     - python
     - python-libarchive-c
     - pytz
