@@ -93,7 +93,7 @@ test:
     - conda-debug --help
 
   downstreams:
-    - conda-smithy  # [py>=311]
+    - conda-smithy  # [py>=311 and not osx]
 
 about:
   home: https://github.com/conda/conda-build
