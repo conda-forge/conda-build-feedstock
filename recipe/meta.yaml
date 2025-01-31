@@ -10,7 +10,7 @@ source:
   sha256: a4fab906e6cbe3dc1a540012dc81500bbb99fe79be6454021042aa9a1d7f66ef
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -46,7 +46,8 @@ requirements:
     - menuinst >=2
     - packaging
     - patch >=2.6        # [not win]
-    - patchelf           # [linux]
+    # cap due to https://github.com/conda/conda-build/issues/4881; https://github.com/NixOS/patchelf/issues/492
+    - patchelf <0.18     # [linux]
     - pkginfo
     - psutil
     # https://github.com/conda/conda-build/issues/5594
