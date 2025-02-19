@@ -92,9 +92,10 @@ test:
     - conda-render --help
     - conda-skeleton --help
     - conda-debug --help
-
+{% if (python or "").split("_")[-1] != "cp313" %}
   downstreams:
     - conda-smithy  # [py>=311 and not osx]
+{% endif %}
 
 about:
   home: https://github.com/conda/conda-build
