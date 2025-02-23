@@ -10,7 +10,7 @@ source:
   sha256: 417e5e87d04adff677ea8782941e7f50771ee25681fd30e1a3ae9cffbc5132d3
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -50,7 +50,7 @@ requirements:
     - patchelf <0.18     # [linux]
     - pkginfo
     - psutil
-    - py-lief <0.17
+    - py-lief <0.16.0a0
     - python
     - python-libarchive-c
     - pytz
