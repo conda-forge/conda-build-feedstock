@@ -10,7 +10,7 @@ source:
   sha256: 417e5e87d04adff677ea8782941e7f50771ee25681fd30e1a3ae9cffbc5132d3
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -92,9 +92,10 @@ test:
     - conda-render --help
     - conda-skeleton --help
     - conda-debug --help
-
+{% if (python or "").split("_")[-1] != "cp313" %}
   downstreams:
     - conda-smithy  # [py>=311 and not osx]
+{% endif %}
 
 about:
   home: https://github.com/conda/conda-build
