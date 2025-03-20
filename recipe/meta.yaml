@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "25.1.2" %}
+{% set version = "25.3.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 417e5e87d04adff677ea8782941e7f50771ee25681fd30e1a3ae9cffbc5132d3
+  sha256: 671db769bd8d783b3eac2ba7aae5b2f063e8a2ef2cf78d4ed396b927909dda6c
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -50,7 +50,7 @@ requirements:
     - patchelf <0.18     # [linux]
     - pkginfo
     - psutil
-    - py-lief <0.15.0a0
+    - py-lief <0.17.0a0
     - python
     - python-libarchive-c
     - pytz
@@ -60,7 +60,7 @@ requirements:
     - tomli         # [py<311]
     - tqdm
   run_constrained:
-    - conda-verify  >=3.1.0
+    - conda-verify >=3.1.0
 
 test:
   imports:
