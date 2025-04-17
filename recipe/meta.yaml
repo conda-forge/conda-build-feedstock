@@ -31,7 +31,7 @@ requirements:
     - pip
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
-  run:    
+  run:
     - beautifulsoup4
     - cctools            # [osx]
     - chardet
