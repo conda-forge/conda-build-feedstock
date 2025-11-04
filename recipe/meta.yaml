@@ -51,7 +51,8 @@ requirements:
     - patchelf <0.18     # [linux]
     - pkginfo
     - psutil
-    - py-lief
+    - py-lief <0.17.0a0  # [cap_lief]
+    - py-lief            # [not cap_lief]
     - python
     - python-libarchive-c
     - pytz
