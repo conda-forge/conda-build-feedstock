@@ -388,14 +388,14 @@ Current release info
 Installing conda-build
 ======================
 
-Installing `conda-build` from the `conda-forge/label/lief_dev` channel can be achieved by adding `conda-forge/label/lief_dev` to your channels with:
+Installing `conda-build` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/lief_dev
+conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/lief_dev` channel has been enabled, `conda-build` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `conda-build` can be installed with `conda`:
 
 ```
 conda install conda-build
@@ -410,26 +410,26 @@ mamba install conda-build
 It is possible to list all of the versions of `conda-build` available on your platform with `conda`:
 
 ```
-conda search conda-build --channel conda-forge/label/lief_dev
+conda search conda-build --channel conda-forge
 ```
 
 or with `mamba`:
 
 ```
-mamba search conda-build --channel conda-forge/label/lief_dev
+mamba search conda-build --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search conda-build --channel conda-forge/label/lief_dev
+mamba repoquery search conda-build --channel conda-forge
 
 # List packages depending on `conda-build`:
-mamba repoquery whoneeds conda-build --channel conda-forge/label/lief_dev
+mamba repoquery whoneeds conda-build --channel conda-forge
 
 # List dependencies of `conda-build`:
-mamba repoquery depends conda-build --channel conda-forge/label/lief_dev
+mamba repoquery depends conda-build --channel conda-forge
 ```
 
 
