@@ -1,5 +1,5 @@
 {% set name = "conda-build" %}
-{% set version = "25.9.0" %}
+{% set version = "25.11.0" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3ea80c84629e7e3109a5703d15b2b48ccb67a2365523172d7b4430c95e2a2867
+  sha256: bd319f21e5e09cc8e5824a5d8738182b49aa1d02a2e2a5bbfe90298fa08b0bc9
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
