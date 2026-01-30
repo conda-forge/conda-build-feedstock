@@ -1,16 +1,16 @@
-{% set name = "conda-build" %}
-{% set version = "25.11.1" %}
+{% set version = "26.1.0" %}
 
 package:
-  name: {{ name }}
+  name: conda-build
   version: {{ version }}
 
 source:
-  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c41e1163ff7de7301ead0889a733b5f73ed89fc6c4e8a18d45fa7b8e8ca3bc13
+  url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
+  sha256: 61021a7d16e640c439248b76585055f498d95fa0db40131516b064141fecf7ba
 
 build:
   number: 0
+  noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
@@ -27,7 +27,7 @@ requirements:
     - python                               # [build_platform != target_platform]
     - cross-python_{{ target_platform }}   # [build_platform != target_platform]
   host:
-    - python
+    - python ${{ python_min }}.*
     - pip
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
@@ -51,9 +51,9 @@ requirements:
     - patchelf <0.18     # [linux]
     - pkginfo
     - psutil
-    - py-lief <0.17.0a0  # [cap_lief]
-    - py-lief            # [not cap_lief]
-    - python
+    - py-lief
+    - python >={{ python_min }}.*
+    - python >=3.10,<3.11   # [python_min == "3.10"]
     - python-libarchive-c
     - pytz
     - pyyaml
@@ -61,6 +61,9 @@ requirements:
     - ripgrep
     - tomli         # [py<311]
     - tqdm
+    - __linux       # [linux]
+    - __osx         # [osx]
+    - __win         # [win]
   run_constrained:
     - conda-verify >=3.1.0
 
@@ -71,6 +74,7 @@ test:
 
   requires:
     - pip
+    - python {{ python_min }}.*
 
   commands:
     - python -m pip check
@@ -94,10 +98,8 @@ test:
     - conda-render --help
     - conda-skeleton --help
     - conda-debug --help
-{% if (python or "").split("_")[-1] != "cp313" %}
   downstreams:
-    - conda-smithy  # [py>=311 and not osx]
-{% endif %}
+    - conda-smithy  # [python_min != "3.10" and not osx]
 
 about:
   home: https://github.com/conda/conda-build
