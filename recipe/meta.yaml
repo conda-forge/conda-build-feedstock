@@ -52,7 +52,7 @@ requirements:
     - pkginfo
     - psutil
     - py-lief
-    - python >={{ python_min }}.*
+    - python >={{ python_min }}
     - python >=3.10,<3.11   # [python_min == "3.10"]
     - python-libarchive-c
     - pytz
