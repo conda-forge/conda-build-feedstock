@@ -8,53 +8,11 @@ jobs:
     vmImage: macOS-15
   strategy:
     matrix:
-      osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython:
-        CONFIG: osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython
+      osx_64_python_min3.10:
+        CONFIG: osx_64_python_min3.10
         UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython:
-        CONFIG: osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython:
-        CONFIG: osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313:
-        CONFIG: osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython:
-        CONFIG: osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython:
-        CONFIG: osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython:
-        CONFIG: osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313:
-        CONFIG: osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython:
-        CONFIG: osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython:
-        CONFIG: osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython:
-        CONFIG: osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313:
-        CONFIG: osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython:
-        CONFIG: osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython:
-        CONFIG: osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython:
-        CONFIG: osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313:
-        CONFIG: osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313
+      osx_64_python_min3.11:
+        CONFIG: osx_64_python_min3.11
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables: {}
