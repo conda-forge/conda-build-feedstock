@@ -59,7 +59,7 @@ requirements:
     - pyyaml
     - requests
     - ripgrep
-    - tomli         # [py<311]
+    - tomli         # [python_min == "3.10"]
     - tqdm
     - __linux       # [linux]
     - __osx         # [osx]
