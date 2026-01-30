@@ -53,13 +53,15 @@ requirements:
     - psutil
     - py-lief
     - python >={{ python_min }}
-    - python >=3.10,<3.11   # [python_min == "3.10"]
+{% if python_min == "3.10" %}
+    - python >=3.10,<3.11
+    - tomli
+{% endif %}
     - python-libarchive-c
     - pytz
     - pyyaml
     - requests
     - ripgrep
-    - tomli         # [python_min == "3.10"]
     - tqdm
     - __linux       # [linux]
     - __osx         # [osx]
