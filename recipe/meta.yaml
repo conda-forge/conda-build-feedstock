@@ -12,6 +12,8 @@ build:
   number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  force_use_keys:
+    - python_min
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
     - conda-convert = conda_build.cli.main_convert:execute
