@@ -52,10 +52,11 @@ requirements:
     - pkginfo
     - psutil
     - py-lief
-    - python >={{ python_min }}
 {% if python_min == "3.10" %}
     - python >=3.10,<3.11
     - tomli
+{% else %}
+    - python >={{ python_min }}
 {% endif %}
     - python-libarchive-c
     - pytz
