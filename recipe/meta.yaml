@@ -1,4 +1,5 @@
 {% set version = "26.1.0" %}
+{% set build = 1 %}
 
 package:
   name: conda-build
@@ -9,14 +10,9 @@ source:
   sha256: 61021a7d16e640c439248b76585055f498d95fa0db40131516b064141fecf7ba
 
 build:
-  number: 1
+  number: {{ build+100 if python_min == "3.10" else build }}
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-{% if python_min == "3.10" %}  
-  string: py310_pyh{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
-{% else %}
-  string: pyh{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
-{% endif %}
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
     - conda-convert = conda_build.cli.main_convert:execute
