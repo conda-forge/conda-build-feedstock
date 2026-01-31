@@ -9,11 +9,14 @@ source:
   sha256: 61021a7d16e640c439248b76585055f498d95fa0db40131516b064141fecf7ba
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  force_use_keys:
-    - python_min
+{% if python_min == "3.10" %}  
+  string: py310_pyh{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+{% else %}
+  string: pyh{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+{% endif %}
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
     - conda-convert = conda_build.cli.main_convert:execute
