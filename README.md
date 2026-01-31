@@ -21,359 +21,11 @@ Current build status
 ====================
 
 
-<table>
-    
-  <tr>
-    <td>Azure</td>
+<table><tr><td>All platforms:</td>
     <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieffalsechannel_targetsconda-forge_lief_devpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cap_lieftruechannel_targetsconda-forge_mainpython3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=175&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-build-feedstock?branchName=main">
+      </a>
     </td>
   </tr>
 </table>
@@ -388,14 +40,14 @@ Current release info
 Installing conda-build
 ======================
 
-Installing `conda-build` from the `conda-forge/label/lief_dev` channel can be achieved by adding `conda-forge/label/lief_dev` to your channels with:
+Installing `conda-build` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/lief_dev
+conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/lief_dev` channel has been enabled, `conda-build` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `conda-build` can be installed with `conda`:
 
 ```
 conda install conda-build
@@ -410,26 +62,26 @@ mamba install conda-build
 It is possible to list all of the versions of `conda-build` available on your platform with `conda`:
 
 ```
-conda search conda-build --channel conda-forge/label/lief_dev
+conda search conda-build --channel conda-forge
 ```
 
 or with `mamba`:
 
 ```
-mamba search conda-build --channel conda-forge/label/lief_dev
+mamba search conda-build --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search conda-build --channel conda-forge/label/lief_dev
+mamba repoquery search conda-build --channel conda-forge
 
 # List packages depending on `conda-build`:
-mamba repoquery whoneeds conda-build --channel conda-forge/label/lief_dev
+mamba repoquery whoneeds conda-build --channel conda-forge
 
 # List dependencies of `conda-build`:
-mamba repoquery depends conda-build --channel conda-forge/label/lief_dev
+mamba repoquery depends conda-build --channel conda-forge
 ```
 
 

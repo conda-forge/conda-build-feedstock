@@ -1,12 +1,3 @@
-cap_lief:
-  - true
-  - false
-
-channel_targets:
-  - conda-forge main
-  # for testing conda-build with lief 0.17
-  - conda-forge lief_dev
-
-zip_keys:
-  - cap_lief
-  - channel_targets
+python_min:
+- 3.11
+- 3.10
