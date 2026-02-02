@@ -1,5 +1,5 @@
 {% set version = "26.1.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 package:
   name: conda-build
@@ -36,7 +36,7 @@ requirements:
     - beautifulsoup4
     - cctools            # [osx]
     - chardet
-    - conda >=24.11.0
+    - conda >=25.11.0
     - conda-index >=0.4.0
     - conda-package-handling >=2.2.0
     - evalidate >=2,<3.0a
@@ -69,6 +69,7 @@ requirements:
     - __osx         # [osx]
     - __win         # [win]
   run_constrained:
+    - conda-libmamba-solver >=25.11.0
     - conda-verify >=3.1.0
 
 test:
