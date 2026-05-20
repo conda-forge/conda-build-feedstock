@@ -11,9 +11,11 @@ jobs:
       win_64_python_min3.10:
         CONFIG: win_64_python_min3.10
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_python_min3.11:
         CONFIG: win_64_python_min3.11
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
