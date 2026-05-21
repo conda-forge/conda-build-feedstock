@@ -12,10 +12,12 @@ jobs:
         CONFIG: osx_64_python_min3.10
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
+        store_build_artifacts: false
       osx_64_python_min3.11:
         CONFIG: osx_64_python_min3.11
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
+        store_build_artifacts: false
   timeoutInMinutes: 360
   variables: {}
 
