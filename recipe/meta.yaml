@@ -1,18 +1,29 @@
 {% set version = "26.5.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: conda-build
   version: {{ version }}
 
 source:
-  url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
-  sha256: ce2c9c2b8e620ab4e533f6e2207b5a0638c2c5575f1797dc8a8bf6e67c55c355
-
+  - url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
+    sha256: ce2c9c2b8e620ab4e533f6e2207b5a0638c2c5575f1797dc8a8bf6e67c55c355
+  # These Windows launchers are built in public CI and signed with community-owned certificates
+  - url: https://github.com/conda/conda-launchers/releases/download/24.7.1-5/cli-64-24.7.1-e8b2e36_gcc_5.exe
+    sha256: 4d8c479577961d0c6d940966f7987fbb0d6fc98b80edc03b00ee949dd8c1b3e2
+    folder: signed-launchers
+  - url: https://github.com/conda/conda-launchers/releases/download/24.7.1-5/gui-64-24.7.1-e8b2e36_gcc_5.exe
+    sha256: 1ebb2934a75dd3aa5845ec77f7c257a903dacfc3b77e1b893f61f8f281a7d9a9
+    folder: signed-launchers
 build:
   number: {{ build+100 if python_min == "3.10" else build }}
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  script:
+    - COPY /Y signed-launchers\cli-64-*.exe conda_build\cli-64.exe  # [win]
+    - COPY /Y signed-launchers\gui-64-*.exe conda_build\gui-64.exe  # [win]
+    - cp -f signed-launchers/cli-64-*.exe conda_build/cli-64.exe # [unix]
+    - cp -f signed-launchers/gui-64-*.exe conda_build/gui-64.exe # [unix]
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
     - conda-convert = conda_build.cli.main_convert:execute
