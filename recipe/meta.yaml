@@ -21,8 +21,8 @@ build:
   script:
     - COPY /Y signed-launchers\cli-64-*.exe conda_build\cli-64.exe  # [win]
     - COPY /Y signed-launchers\gui-64-*.exe conda_build\gui-64.exe  # [win]
-    - cp -f signed-launchers/cli-64-*.exe conda_build/cli-64.exe # [unix]
-    - cp -f signed-launchers/gui-64-*.exe conda_build/gui-64.exe # [unix]
+    - cp -f signed-launchers/cli-64-*.exe conda_build/cli-64.exe  # [unix]
+    - cp -f signed-launchers/gui-64-*.exe conda_build/gui-64.exe  # [unix]
     - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
