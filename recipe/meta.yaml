@@ -53,7 +53,7 @@ requirements:
     - pkginfo
     - psutil
     - py-lief
-    - py-rattler-build >=0.61.4
+    - py-rattler-build >=0.65.1
 {% if python_min == "3.10" %}
     - python >=3.10,<3.11
     - tomli
@@ -62,7 +62,6 @@ requirements:
 {% endif %}
     - python-libarchive-c
     - pyyaml
-    - rattler-build
     - requests
     - ripgrep
     - tqdm
