@@ -1,5 +1,5 @@
 {% set version = "26.5.0" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: conda-build
@@ -48,8 +48,7 @@ requirements:
     - menuinst >=2
     - packaging
     - patch >=2.6        # [not win]
-    # cap due to https://github.com/conda/conda-build/issues/4881; https://github.com/NixOS/patchelf/issues/492
-    - patchelf <0.18     # [linux]
+    - patchelf           # [linux]
     - pkginfo
     - psutil
     - py-lief
