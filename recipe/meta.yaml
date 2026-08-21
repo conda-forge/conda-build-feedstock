@@ -49,7 +49,7 @@ requirements:
     - packaging
     - patch >=2.6        # [not win]
     # cap due to https://github.com/conda/conda-build/issues/4881; https://github.com/NixOS/patchelf/issues/492
-    - patchelf <0.18     # [unix]
+    - patchelf >=0.17,!=0.18.*     # [unix]
     - pkginfo
     - psutil
     - py-lief
