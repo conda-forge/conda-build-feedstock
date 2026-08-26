@@ -12,7 +12,12 @@ source:
 build:
   number: {{ build+100 if python_min == "3.10" else build }}
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  script:
+    - COPY /Y {{ PREFIX }}\share\conda-launchers\cli-64-*.exe conda_build\cli-64.exe  # [win]
+    - COPY /Y {{ PREFIX }}\share\conda-launchers\gui-64-*.exe conda_build\gui-64.exe  # [win]
+    - cp -f {{ PREFIX }}/share/conda-launchers/cli-64.exe conda_build/cli-64.exe  # [unix]
+    - cp -f {{ PREFIX }}/share/conda-launchers/gui-64.exe conda_build/gui-64.exe  # [unix]
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   entry_points:
     - conda-build = conda_build.cli.main_build:execute
     - conda-convert = conda_build.cli.main_convert:execute
@@ -30,6 +35,7 @@ requirements:
   host:
     - python {{ python_min }}.*
     - pip
+    - conda-launchers 24.7.1
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
   run:
