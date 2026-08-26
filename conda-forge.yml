@@ -11,8 +11,7 @@ github:
 provider:
   linux_aarch64: default
   linux_ppc64le: default
+  win_arm64: default
 test: native_and_emulated
 noarch_platforms:
-  - linux_64
-  - osx_64
-  - win_64
+  - win_arm64
