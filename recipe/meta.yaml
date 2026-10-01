@@ -30,14 +30,15 @@ requirements:
   host:
     - python {{ python_min }}.*
     - pip
-    - hatchling >=1.12.2
+    - hatchling >=1.27.0
     - hatch-vcs >=0.2.0
   run:
     - beautifulsoup4
     - cctools            # [osx]
     - chardet
-    - conda >=25.11.0
+    - conda >=26.1.0
     - conda-index >=0.4.0
+    - conda-launchers >=24.7.1
     - conda-package-handling >=2.2.0
     - evalidate >=2,<3.0a
     - filelock
