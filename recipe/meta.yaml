@@ -1,5 +1,5 @@
-{% set version = "26.7.1" %}
-{% set build = 1 %}
+{% set version = "26.9.0" %}
+{% set build = 0 %}
 
 package:
   name: conda-build
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/conda/conda-build/releases/download/{{ version }}/conda-build-{{ version }}.tar.gz
-  sha256: a49ee8d6611adcf0c48ffac5d0e26083cf27e209d340f601299ef9306abfc858
+  sha256: 614ba99507df18e995eae496e67c9aaf649b9b73c9dbbb303019e9b058a57edf
 
 build:
   number: {{ build+100 if python_min == "3.10" else build }}
@@ -30,14 +30,15 @@ requirements:
   host:
     - python {{ python_min }}.*
     - pip
-    - hatchling >=1.12.2
+    - hatchling >=1.27.0
     - hatch-vcs >=0.2.0
   run:
     - beautifulsoup4
     - cctools            # [osx]
     - chardet
-    - conda >=25.11.0
+    - conda >=26.1.0
     - conda-index >=0.4.0
+    - conda-launchers >=24.7.1
     - conda-package-handling >=2.2.0
     - evalidate >=2,<3.0a
     - filelock
